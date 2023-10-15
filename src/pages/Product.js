@@ -1,5 +1,5 @@
 import React from 'react'
-import { SP6 } from '../assets/Index';
+import { LC6 } from '../assets/Index';
 import { NavLink } from 'react-router-dom'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -16,7 +16,7 @@ const Product = () => {
                             <div class="col-lg-6">
                                 <div class="border rounded-4 mb-3 d-flex justify-content-center">
                                     <a class="rounded-4" target="_blank"  >
-                                        <img class="rounded-4 fit mw-100 mh-100" src={SP6} />
+                                        <img class="rounded-4 fit mw-100 mh-100" src={LC6} />
                                     </a>
                                 </div>
                             </div>
@@ -69,16 +69,16 @@ const Product = () => {
                                     <h5 className='text-danger'>Hình ảnh</h5>
                                     <div className='row d-flex gx-0'>
                                         <div className='col'>
-                                            <img src={SP6} width="120px" />
+                                            <img src={LC6} width="120px" />
                                         </div>
                                         <div className='col'>
-                                            <img src={SP6} width="120px" />
+                                            <img src={LC6} width="120px" />
                                         </div>
                                         <div className='col'>
-                                            <img src={SP6} width="120px" />
+                                            <img src={LC6} width="120px" />
                                         </div>
                                         <div className='col'>
-                                            <img src={SP6} width="120px" />
+                                            <img src={LC6} width="120px" />
                                         </div>
                                     </div>
 

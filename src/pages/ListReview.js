@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { SP4 } from '../assets/Index'
+import { Avatar } from '../assets/Index'
 import Pagination from '../components/Pagination'
 
 const ListReview = () => {
@@ -22,7 +22,7 @@ const ListReview = () => {
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-1  text-center mt-2">
-                            <img src={SP4} style={{ height: "130px", width: "80px" }}/>
+                            <img src={Avatar} style={{ height: "130px", width: "100px" }} />
                         </div>
                         <div class="col-md-11">
                             <div class="card-body">
@@ -43,7 +43,7 @@ const ListReview = () => {
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-1  text-center mt-2">
-                            <img src={SP4} style={{ height: "130px", width: "80px" }}/>
+                            <img src={Avatar} style={{ height: "130px", width: "100px" }} />
                         </div>
                         <div class="col-md-11">
                             <div class="card-body">
@@ -64,7 +64,7 @@ const ListReview = () => {
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-1  text-center mt-2">
-                            <img src={SP4} style={{ height: "130px", width: "80px" }}/>
+                            <img src={Avatar} style={{ height: "130px", width: "100px" }} />
                         </div>
                         <div class="col-md-11">
                             <div class="card-body">
@@ -85,7 +85,7 @@ const ListReview = () => {
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-1  text-center mt-2">
-                            <img src={SP4} style={{ height: "130px", width: "80px" }}/>
+                            <img src={Avatar} style={{ height: "130px", width: "100px" }} />
                         </div>
                         <div class="col-md-11">
                             <div class="card-body">

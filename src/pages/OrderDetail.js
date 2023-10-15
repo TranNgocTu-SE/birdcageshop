@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { SP1 } from '../assets/Index'
+import { LC1 } from '../assets/Index'
 
 const OrderDetail = () => {
     return (
@@ -64,7 +64,7 @@ const OrderDetail = () => {
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <img src={SP1}
+                                                    <img src={LC1}
                                                         class="img-fluid" alt="Phone" />
                                                 </div>
                                                 <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
@@ -106,7 +106,7 @@ const OrderDetail = () => {
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <img src={SP1}
+                                                    <img src={LC1}
                                                         class="img-fluid" alt="Phone" />
                                                 </div>
                                                 <div class="col-md-2 text-center d-flex justify-content-center align-items-center">

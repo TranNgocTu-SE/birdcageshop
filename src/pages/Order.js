@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { SP2 } from '../assets/Index'
+import { LC2 } from '../assets/Index'
 import { NavLink } from 'react-router-dom'
 
 const Order = () => {
@@ -26,7 +26,7 @@ const Order = () => {
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><img src={SP2} style={{width:"60px",height:"80px"}}/></td>
+                            <td><img src={LC2} style={{width:"60px",height:"80px"}}/></td>
                             <td>Lồng chim sẻ</td>
                             <td>gỗ trúc màu vàng sang trọng</td>
                             <td>1</td>
@@ -37,7 +37,7 @@ const Order = () => {
                         </tr>
                         <tr>
                             <th scope="row">1</th>
-                            <td><img src={SP2} style={{width:"60px",height:"80px"}}/></td>
+                            <td><img src={LC2} style={{width:"60px",height:"80px"}}/></td>
                             <td>Lồng chim sẻ</td>
                             <td>gỗ trúc màu vàng sang trọng</td>
                             <td>1</td>
@@ -48,7 +48,7 @@ const Order = () => {
                         </tr>
                         <tr>
                             <th scope="row">1</th>
-                            <td><img src={SP2} style={{width:"60px",height:"80px"}}/></td>
+                            <td><img src={LC2} style={{width:"60px",height:"80px"}}/></td>
                             <td>Lồng chim sẻ</td>
                             <td>gỗ trúc màu vàng sang trọng</td>
                             <td>1</td>

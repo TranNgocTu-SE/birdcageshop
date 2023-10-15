@@ -5,14 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import UserReducer from './reudux/UserReducer';
-
-const store = configureStore({
-    reducer:{
-      users: UserReducer
-    }
-});
+import store from './redux/Store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

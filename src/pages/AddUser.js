@@ -1,102 +1,75 @@
 import React, { useState } from 'react'
-import { addUser } from '../reudux/UserReducer'
-import { useDispatch, useSelector } from 'react-redux';
-import {  useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { createUser } from '../redux/userSlice';
 
 const AddUser = () => {
-    const [name,setName] = useState('');
-    const [email,setEmail] = useState('');
-    const users = useSelector((state) => state.users)
+    const [user, setUser] = useState({});
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        dispatch(addUser({id:users[users.length - 1].id,name,email}))
-        navigate('/');
+    const handleOnChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value })
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault(e);
+        console.log(user);
+        dispatch(createUser(user));
+        navigate('/adminDashboard');
     }
 
     return (
         <div className='container'>
-            <section class="vh-100 gradient-custom">
-                <div class="container py-5 h-100">
-                    <div class="row justify-content-center align-items-center h-100">
-                        <div class="col-12 col-lg-9 col-xl-7">
-                            <div class="card shadow-2-strong card-registration" style ={{borderRadius: "15px;"}}>
-                                <div class="card-body p-4 p-md-5">
-                                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Add Form</h3>
+            <section className="vh-100">
+                <div className="container h-100">
+                    <div className="row justify-content-center align-items-center h-100">
+                        <div className="col-12 col-lg-9 col-xl-7">
+                            <div className="card shadow-2-strong card-registration" style={{ borderRadius: "15px" }}>
+                                <div className="card-body p-4">
+                                    <h3 className="mb-4 pb-2 pb-md-0 mb-md-5">Add Form</h3>
                                     <form onSubmit={handleSubmit}>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4">
-                                                <div class="form-outline">
-                                                    <input type="text" id="firstName" class="form-control form-control-lg" onChange={e => setName(e.target.value)}/>
-                                                    <label class="form-label" for="firstName">Name</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-4">
-                                                <div class="form-outline">
-                                                    <input type="text" id="lastName" class="form-control form-control-lg" onChange={e => setEmail(e.target.value)} />
-                                                    <label class="form-label" for="lastName">Email</label>
-                                                </div>
-
+                                        <div className="col mb-2">
+                                            <div className="form-outline">
+                                                <input type="text" id="userName" name='username' className="form-control form-control-lg" onChange={handleOnChange} />
+                                                <label className="form-label" htmlFor="userName">Name</label>
                                             </div>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                                                <div class="form-outline datepicker w-100">
-                                                    <input type="text" class="form-control form-control-lg" id="birthdayDate" />
-                                                    <label for="birthdayDate" class="form-label">Birthday</label>
-                                                </div>
+                                        <div className="col mb-2">
+                                            <div className="form-outline">
+                                                <input type="text" id="email" name='email' className="form-control form-control-lg" onChange={handleOnChange} />
+                                                <label className="form-label" htmlFor="email">Email</label>
                                             </div>
-                                            <div class="col-md-6 mb-4">
-                                                <h6 class="mb-2 pb-1">Gender: </h6>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                                                        value="option1" checked />
-                                                    <label class="form-check-label" for="femaleGender">Female</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                                                        value="option2" />
-                                                    <label class="form-check-label" for="maleGender">Male</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                                                        value="option3" />
-                                                    <label class="form-check-label" for="otherGender">Other</label>
+
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col mb-2 d-flex align-items-center">
+
+                                                <div className="form-outline datepicker w-100">
+                                                    <input type="text" name='address' className="form-control form-control-lg" id="birthdayDate" onChange={handleOnChange} />
+                                                    <label htmlFor="birthdayDate" className="form-label">Address</label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 pb-2">
-
-                                                <div class="form-outline">
-                                                    <input type="email" id="emailAddress" class="form-control form-control-lg" />
-                                                    <label class="form-label" for="emailAddress">Email</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
-                                                    <label class="form-label" for="phoneNumber">Phone Number</label>
-                                                </div>
+                                        <div className="col mb-2 pb-2">
+                                            <div className="form-outline">
+                                                <input type="tel" id="phoneNumber" name='phone' className="form-control form-control-lg" onChange={handleOnChange} />
+                                                <label className="form-label" htmlFor="phoneNumber">Phone Number</label>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <select class="select form-control-lg">
-                                                    <option value="1" disabled>Choose option</option>
-                                                    <option value="2">Subject 1</option>
-                                                    <option value="3">Subject 2</option>
-                                                    <option value="4">Subject 3</option>
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <label className="form-label select-label me-3">Role</label>
+                                                <select className="select form-control-md" name='role' onChange={handleOnChange}>
+                                                    <option value="1">Manager</option>
+                                                    <option value="2">Staff</option>
+                                                    <option value="3">Customer</option>
                                                 </select>
-                                                <label class="form-label select-label">Choose option</label>
                                             </div>
                                         </div>
-                                        <div class="mt-4 pt-2">
-                                            <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                                        <div className="mt-2 pt-1 text-end">
+                                            <button className="btn btn-outline-success" type="submit">Submit</button>
                                         </div>
                                     </form>
                                 </div>

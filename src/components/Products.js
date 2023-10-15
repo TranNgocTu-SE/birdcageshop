@@ -1,5 +1,5 @@
 import React from 'react'
-import { Background,SP1, SP2, SP3, SP4,SP5, SP6, SP7, SP8,SP9 } from '../assets/Index';
+import { Sale,LC1,LC2,LC3,LC4,LC5,LC6,LC7,LC8,LC9 } from '../assets/Index';
 import {NavLink} from 'react-router-dom'
 import Header from './Header';
 import Footer from './Footer';
@@ -13,7 +13,7 @@ const Products = () => {
                     <div className='row'>
                         <div class="col">
                             <div class="card">
-                                <img src={SP1} class="card-img-top" height="400px" alt="..." />
+                                <img src={LC1} class="card-img-top" height="400px" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">Ten San Pham</h5>
                                     <a href="#" class="btn btn-outline-success float-end">Chi tiet</a>
@@ -22,7 +22,7 @@ const Products = () => {
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src={SP2} class="card-img-top" height="400px" alt="..." />
+                                <img src={LC2} class="card-img-top" height="400px" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">Ten San Pham</h5>
                                     <a href="#" class="btn btn-outline-success float-end">Chi tiet</a>
@@ -31,7 +31,7 @@ const Products = () => {
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src={SP3} class="card-img-top" height="400px" alt="..." />
+                                <img src={LC3} class="card-img-top" height="400px" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">Ten San Pham</h5>
                                     <a href="#" class="btn btn-outline-success float-end">Chi tiet</a>
@@ -40,7 +40,7 @@ const Products = () => {
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src={SP4} class="card-img-top" height="400px" alt="..." />
+                                <img src={LC4} class="card-img-top" height="400px" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">Ten San Pham</h5>
                                     <a href="#" class="btn btn-outline-success float-end">Chi tiet</a>
@@ -54,7 +54,7 @@ const Products = () => {
                     <div className='row mb-2'>
                         <div class="col-3">
                             <div class="card">
-                                <img src={SP5} class="card-img-top" height="400px" alt="..." />
+                                <img src={LC5} class="card-img-top" height="400px" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">Ten San Pham</h5>
                                     <a href="#" class="btn btn-outline-success float-end">Chi tiet</a>
@@ -63,7 +63,7 @@ const Products = () => {
                         </div>
                         <div class="col-3">
                             <div class="card">
-                                <img src={SP6} class="card-img-top" height="400px" alt="..." />
+                                <img src={LC6} class="card-img-top" height="400px" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">Ten San Pham</h5>
                                     <NavLink to="/detail" className='btn btn-outline-success float-end'>Chi tiet</NavLink>
@@ -72,7 +72,7 @@ const Products = () => {
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src={SP7} class="card-img-top" height="400px" alt="..." />
+                                <img src={LC7} class="card-img-top" height="400px" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">Ten San Pham</h5>
                                     <a href="#" class="btn btn-outline-success float-end">Chi tiet</a>
@@ -81,11 +81,10 @@ const Products = () => {
                         </div>
                         <div class="col">
                             <div class="card">
-                                <img src={SP8} class="card-img-top" height="400px" alt="..." />
+                                <img src={LC8} class="card-img-top" height="400px" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">Ten San Pham</h5>
                                     <NavLink to="/detail" className='btn btn-outline-success float-end'>Chi tiet</NavLink>
-                                    
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { SP1, SP2} from '../assets/Index'
+import { LC1, LC2} from '../assets/Index'
 
 const Compare = () => {
   return (
@@ -21,8 +21,8 @@ const Compare = () => {
           <table class="table table-bordered">
             <tbody>
               <tr>
-                <td><img src={SP1} width="200px" height="250px" /></td>
-                <td><img src={SP2} width="200px" height="250px" /></td>
+                <td><img src={LC1} width="200px" height="250px" /></td>
+                <td><img src={LC2} width="200px" height="250px" /></td>
               </tr>
               <tr>
                 <td>Tên</td>

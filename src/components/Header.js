@@ -1,5 +1,5 @@
 import React from 'react'
-import { BirdCageLogo } from '../assets/Index'
+import { Logo } from '../assets/Index'
 import { NavLink } from 'react-router-dom'
 
 const Header = () => {
@@ -9,7 +9,7 @@ const Header = () => {
                 <div className='container text-light pt-3'>
                     <div class="row">
                         <div class="col-md-8 fs-3">
-                            <img src={BirdCageLogo} alt='Logo' width="60px" className='rounded-circle me-3' />
+                            <img src={Logo} alt='Logo' width="60px" className='rounded-circle me-3' />
                             Thế giới lồng chim
                         </div>
                         <div className='col-md-4  text-end'>

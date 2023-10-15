@@ -1,5 +1,5 @@
 import React from 'react'
-import { SP8 } from '../assets/Index'
+import { LC8,LC9 } from '../assets/Index'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { NavLink } from 'react-router-dom'
@@ -8,193 +8,112 @@ const ShoppingCart = () => {
     return (
         <div>
             <Header />
-                <section class="h-100 ">
-                    <div class="container py-5 h-100">
-                        <div class="row d-flex justify-content-center align-items-center h-100">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-body p-4">
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <h5 class="mb-3"><a href="#!" class="text-body"><i
-                                                    class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
-                                                <hr />
-                                                <div class="card mb-3">
-                                                    <div class="card-body">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="d-flex flex-row align-items-center">
-                                                                <div>
-                                                                    <img
-                                                                        src={SP8}
-                                                                        class="img-fluid rounded-3" alt="Shopping item" style={{ width: "65px" }} />
-                                                                </div>
-                                                                <div class="ms-3">
-                                                                    <h5>Iphone 11 pro</h5>
-                                                                    <p class="small mb-0">256GB, Navy Blue</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center">
-                                                                <div style={{ width: "50px" }}>
-                                                                    <h5 class="fw-normal mb-0">2</h5>
-                                                                </div>
-                                                                <div style={{ width: "80px" }}>
-                                                                    <h5 class="mb-0">$900</h5>
-                                                                </div>
-                                                                <a href="#!" style={{ color: "#cecece" }}><i class="fas fa-trash-alt"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card mb-3">
-                                                    <div class="card-body">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="d-flex flex-row align-items-center">
-                                                                <div>
-                                                                    <img
-                                                                        src={SP8}
-                                                                        class="img-fluid rounded-3" alt="Shopping item" style={{ width: "65px" }} />
-                                                                </div>
-                                                                <div class="ms-3">
-                                                                    <h5>Samsung galaxy Note 10 </h5>
-                                                                    <p class="small mb-0">256GB, Navy Blue</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center">
-                                                                <div style={{ width: "50px" }}>
-                                                                    <h5 class="fw-normal mb-0">2</h5>
-                                                                </div>
-                                                                <div style={{ width: "80px" }}>
-                                                                    <h5 class="mb-0">$900</h5>
-                                                                </div>
-                                                                <a href="#!" style={{ color: "#cecece" }}><i class="fas fa-trash-alt"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card mb-3">
-                                                    <div class="card-body">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="d-flex flex-row align-items-center">
-                                                                <div>
-                                                                    <img
-                                                                       src={SP8}
-                                                                        class="img-fluid rounded-3" alt="Shopping item" style={{ width: "65px" }} />
-                                                                </div>
-                                                                <div class="ms-3">
-                                                                    <h5>Canon EOS M50</h5>
-                                                                    <p class="small mb-0">Onyx Black</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center">
-                                                                <div style={{ width: "50px" }}>
-                                                                    <h5 class="fw-normal mb-0">1</h5>
-                                                                </div>
-                                                                <div style={{ width: "80px" }}>
-                                                                    <h5 class="mb-0">$1199</h5>
-                                                                </div>
-                                                                <a href="#!" style={{ color: "#cecece" }}><i class="fas fa-trash-alt"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card mb-3 mb-lg-0">
-                                                    <div class="card-body">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="d-flex flex-row align-items-center">
-                                                                <div>
-                                                                    <img
-                                                                       src={SP8}
-                                                                        class="img-fluid rounded-3" alt="Shopping item" style={{ width: "65px" }} />
-                                                                </div>
-                                                                <div class="ms-3">
-                                                                    <h5>MacBook Pro</h5>
-                                                                    <p class="small mb-0">1TB, Graphite</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center">
-                                                                <div style={{ width: "50px" }}>
-                                                                    <h5 class="fw-normal mb-0">1</h5>
-                                                                </div>
-                                                                <div style={{ width: "80px" }}>
-                                                                    <h5 class="mb-0">$1799</h5>
-                                                                </div>
-                                                                <a href="#!" style={{ color: "#cecece" }}><i class="fas fa-trash-alt"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+            <section className="vh-100 bg-white">
+                <div className="container h-100">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
+                        <div className="col">
+                            <p><span className="h2">Shopping Cart </span><span className="h4">(1 item in your cart)</span></p>
+                            <div className="card mb-4">
+                                <div className="card-body p-2">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-2">
+                                            <img src={LC8}
+                                                className="img-fluid" alt="Generic placeholder image" style = {{height:"150px"}}/>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small  mb-2 pb-2">Name</p>
+                                                <p className="lead fw-normal mb-0">iPad Air</p>
                                             </div>
-                                            <div class="col-lg-5">
-
-                                                <div class="card bg-dark text-white rounded-3">
-                                                    <div class="card-body">
-                                                        <div class="d-flex justify-content-between align-items-center mb-4">
-                                                            <h5 class="mb-0">Card details</h5>
-                                                            <img src={SP8}
-                                                                class="img-fluid rounded-3" style={{ width: "45px",height:"60px" }} alt="Avatar" />
-                                                        </div>
-
-                                                        <p class="small mb-2">Card type</p>
-                                                        <a href="#!" type="submit" class="text-white"><i class="bi bi-credit-card"></i></a>
-                                                        <form class="mt-4">
-                                                            <div class="form-outline form-white mb-4">
-                                                                <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                                                                    placeholder="Cardholder's Name" />
-                                                                <label class="form-label" for="typeName">Cardholder's Name</label>
-                                                            </div>
-
-                                                            <div class="form-outline form-white mb-4">
-                                                                <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                                                                    placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                                                                <label class="form-label" for="typeText">Card Number</label>
-                                                            </div>
-
-                                                            <div class="row mb-4">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-outline form-white">
-                                                                        <input type="text" id="typeExp" class="form-control form-control-lg"
-                                                                            placeholder="MM/YYYY" size="7" minlength="7" maxlength="7" />
-                                                                        <label class="form-label" for="typeExp">Expiration</label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-outline form-white">
-                                                                        <input type="password" id="typeText" class="form-control form-control-lg"
-                                                                            placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                                                                        <label class="form-label" for="typeText">Cvv</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-
-                                                        <hr class="my-4" />
-                                                        <div class="d-flex justify-content-between">
-                                                            <p class="mb-2">Subtotal</p>
-                                                            <p class="mb-2">$4798.00</p>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between">
-                                                            <p class="mb-2">Shipping</p>
-                                                            <p class="mb-2">$20.00</p>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between mb-4">
-                                                            <p class="mb-2">Total(Incl. taxes)</p>
-                                                            <p class="mb-2">$4818.00</p>
-                                                        </div>
-                                                        <button type="button" class="btn btn-outline-success pull-right">
-                                                            <div class="d-flex justify-content-between">
-                                                               <NavLink to="/orderDetail" style={{color:"white",textDecoration:"none"}}><span>Checkout <i class="bi bi-cart-check ms-2"></i></span></NavLink> 
-                                                            </div>
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small mb-2 pb-2">Color</p>
+                                                <p className="lead fw-normal mb-0"><i className="fas fa-circle me-2" style={{color: "#fdd8d2"}}></i>
+                                                    pink rose</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small mb-2 pb-2">Quantity</p>
+                                                <p className="lead fw-normal mb-0">1</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small mb-2 pb-2">Price</p>
+                                                <p className="lead fw-normal mb-0">$799</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small mb-2 pb-2">Total</p>
+                                                <p className="lead fw-normal mb-0">$799</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div className="card mb-4">
+                                <div className="card-body p-2">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-2">
+                                            <img src={LC9}
+                                                className="img-fluid" alt="Generic placeholder image" style = {{height:"150px"}}/>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small  mb-2 pb-2">Name</p>
+                                                <p className="lead fw-normal mb-0">iPad Air</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small mb-2 pb-2">Color</p>
+                                                <p className="lead fw-normal mb-0"><i className="fas fa-circle me-2" style={{color: "#fdd8d2"}}></i>
+                                                    pink rose</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small mb-2 pb-2">Quantity</p>
+                                                <p className="lead fw-normal mb-0">1</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small mb-2 pb-2">Price</p>
+                                                <p className="lead fw-normal mb-0">$799</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2 d-flex justify-content-center">
+                                            <div>
+                                                <p className="small mb-2 pb-2">Total</p>
+                                                <p className="lead fw-normal mb-0">$799</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="card mb-5">
+                                <div className="card-body p-4">
+                                    <div className="float-end">
+                                        <p className="mb-0 me-5 d-flex align-items-center">
+                                            <span className="small text-muted me-2">Order total:</span> <span
+                                                className="lead fw-normal">$799</span>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="d-flex justify-content-end">
+                                <NavLink to="/" className="btn btn-outline-success me-2">Continue shopping</NavLink>
+                                <NavLink to="/checkout" className="btn btn-outline-success ">Checkout</NavLink>
+                            </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
             <Footer />
         </div>
     )

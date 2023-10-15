@@ -1,5 +1,5 @@
 import React from 'react'
-import { SP6, Avatar2 } from '../assets/Index';
+import { LC6, Avatar } from '../assets/Index';
 import Footer from '../components/Footer'
 import { NavLink } from 'react-router-dom'
 import Navbar from '../components/Navbar';
@@ -13,7 +13,7 @@ const Profile = () => {
                     <div class="col-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src={SP6} alt="avatar"
+                                <img src={LC6} alt="avatar"
                                     class="rounded-circle img-fluid" style={{ width: "150px" }} />
                                 <h5 class="my-3">John Smith</h5>
                                 <p class="text-muted mb-1">Full Stack Developer</p>

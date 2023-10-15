@@ -1,16 +1,15 @@
-import BirdCageLogo from './BirdCageLogo3.png';
-import Background from './download.jpg';
-import Avatar from './avatar.jpg';
-import Avatar2 from './avatar2.jpg';
-import SP1 from './SP1.jpg';
-import SP2 from './SP2.jpg';
-import SP3 from './SP3.jpg';
-import SP4 from './SP4.jpg';
-import SP5 from './SP5.jpg';
-import SP6 from './SP6.jpg';
-import SP7 from './SP7.jpg';
-import SP8 from './SP8.jpg';
-import SP9 from './SP9.jpg';
+import LC1 from './LC1.jpg';
+import LC2 from './LC2.jpg';
+import LC3 from './LC3.jpg';
+import LC4 from './LC4.jpg';
+import LC5 from './LC5.jpg';
+import LC6 from './LC6.jpg';
+import LC7 from './LC7.jpg';
+import LC8 from './LC8.jpg';
+import LC9 from './LC9.jpg';
+import Logo from './BirdCageLogo.png'
+import Avatar from './avatar.jpg'
+import Sale from './sale.png'
 
 
-export { BirdCageLogo,Background,Avatar,Avatar2,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9 } ;
+export { Logo,LC1,LC2,LC3,LC4,LC5,LC6,LC7,LC8,LC9,Avatar,Sale } ;

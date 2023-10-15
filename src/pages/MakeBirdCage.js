@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { SP6 } from '../assets/Index'
+import { LC6 } from '../assets/Index'
 import { NavLink } from 'react-router-dom'
 
 const MakeBirdCage = () => {
@@ -70,7 +70,7 @@ const MakeBirdCage = () => {
                                     </div>
                                 </div>
                                 <div className='col-md-2 p-2'>
-                                    <img src={SP6} width="80px" height="120px" />
+                                    <img src={LC6} width="80px" height="120px" />
                                 </div>
                             </div>
                             <div className='row border'>
@@ -126,7 +126,7 @@ const MakeBirdCage = () => {
                                     </div>
                                 </div>
                                 <div className='col-md-2 p-2'>
-                                    <img src={SP6} width="80px" height="120px" />
+                                    <img src={LC6} width="80px" height="120px" />
                                 </div>
                             </div>
                             <div className='row border'>
@@ -182,7 +182,7 @@ const MakeBirdCage = () => {
                                     </div>
                                 </div>
                                 <div className='col-md-2 p-2'>
-                                    <img src={SP6} width="80px" height="120px" />
+                                    <img src={LC6} width="80px" height="120px" />
                                 </div>
                             </div>
                             <div className='row border'>
@@ -238,7 +238,7 @@ const MakeBirdCage = () => {
                                     </div>
                                 </div>
                                 <div className='col-md-2 p-2'>
-                                    <img src={SP6} width="80px" height="120px" />
+                                    <img src={LC6} width="80px" height="120px" />
                                 </div>
                             </div>
                             <div className='row border'>
@@ -294,7 +294,7 @@ const MakeBirdCage = () => {
                                     </div>
                                 </div>
                                 <div className='col-md-2 p-2'>
-                                    <img src={SP6} width="80px" height="120px" />
+                                    <img src={LC6} width="80px" height="120px" />
                                 </div>
                             </div>
                             <div className='row border'>
@@ -350,7 +350,7 @@ const MakeBirdCage = () => {
                                     </div>
                                 </div>
                                 <div className='col-md-2 p-2'>
-                                    <img src={SP6} width="80px" height="120px" />
+                                    <img src={LC6} width="80px" height="120px" />
                                 </div>
                             </div>
                         </div>
