@@ -1,0 +1,261 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Lồng khuyên chim hoa",
+      "price": 20,
+      "sale": 22,
+      "category": "1",
+      "description": "khong co mieu ta",
+      "material": "go",
+      "size": "20 x 30",
+      "cageType": "square",
+      "color": "yellow",
+      "stock": 12,
+      "promotionId": 1,
+      "image": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpg0792ac81-2caa-405c-8f0e-3cc5ca542990?alt=media&token=8742cd90-588e-44b3-ae41-86c512620188&_gl=1*i0caff*_ga*MTkwMTQ4OTg3My4xNjk3NTM3MTY1*_ga_CW55HF8NVT*MTY5ODA4NjMxMS4xMS4xLjE2OTgwODYzMjkuNDIuMC4w"
+    },
+    {
+      "id": 2,
+      "title": "Lồng khuyên ngũ hổ",
+      "price": 20,
+      "category": "1",
+      "description": "khong co mieu ta",
+      "material": "go",
+      "size": "20 x 30",
+      "cageType": "square",
+      "color": "yellow",
+      "image": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpg0792ac81-2caa-405c-8f0e-3cc5ca542990?alt=media&token=8742cd90-588e-44b3-ae41-86c512620188&_gl=1*i0caff*_ga*MTkwMTQ4OTg3My4xNjk3NTM3MTY1*_ga_CW55HF8NVT*MTY5ODA4NjMxMS4xMS4xLjE2OTgwODYzMjkuNDIuMC4w"
+    },
+    {
+      "id": 3,
+      "title": "Lồng khuyên giả thái",
+      "price": 20,
+      "category": "1",
+      "description": "khong co mieu ta",
+      "material": "go",
+      "size": "20 x 30",
+      "cageType": "square",
+      "color": "yellow",
+      "image": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpg0792ac81-2caa-405c-8f0e-3cc5ca542990?alt=media&token=8742cd90-588e-44b3-ae41-86c512620188&_gl=1*i0caff*_ga*MTkwMTQ4OTg3My4xNjk3NTM3MTY1*_ga_CW55HF8NVT*MTY5ODA4NjMxMS4xMS4xLjE2OTgwODYzMjkuNDIuMC4w"
+    },
+    {
+      "id": 4,
+      "title": "Lồng chào mào khảm tùng hạc",
+      "price": 20,
+      "category": "1",
+      "description": "khong co mieu ta",
+      "material": "go",
+      "size": "20 x 30",
+      "cageType": "square",
+      "color": "yellow",
+      "image": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpg0792ac81-2caa-405c-8f0e-3cc5ca542990?alt=media&token=8742cd90-588e-44b3-ae41-86c512620188&_gl=1*i0caff*_ga*MTkwMTQ4OTg3My4xNjk3NTM3MTY1*_ga_CW55HF8NVT*MTY5ODA4NjMxMS4xMS4xLjE2OTgwODYzMjkuNDIuMC4w"
+    },
+    {
+      "id": 5,
+      "title": "Lồng chào mào tre già độ xương",
+      "price": 20,
+      "category": "1",
+      "description": "khong co mieu ta",
+      "material": "go",
+      "size": "20 x 30",
+      "cageType": "square",
+      "color": "yellow",
+      "image": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpg0792ac81-2caa-405c-8f0e-3cc5ca542990?alt=media&token=8742cd90-588e-44b3-ae41-86c512620188&_gl=1*i0caff*_ga*MTkwMTQ4OTg3My4xNjk3NTM3MTY1*_ga_CW55HF8NVT*MTY5ODA4NjMxMS4xMS4xLjE2OTgwODYzMjkuNDIuMC4w"
+    },
+    {
+      "id": 6,
+      "title": "Lồng chào mào để bàn tre già",
+      "price": 20,
+      "category": "1",
+      "description": "khong co mieu ta",
+      "material": "go",
+      "size": "20 x 30",
+      "cageType": "square",
+      "color": "yellow",
+      "image": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpg0792ac81-2caa-405c-8f0e-3cc5ca542990?alt=media&token=8742cd90-588e-44b3-ae41-86c512620188&_gl=1*i0caff*_ga*MTkwMTQ4OTg3My4xNjk3NTM3MTY1*_ga_CW55HF8NVT*MTY5ODA4NjMxMS4xMS4xLjE2OTgwODYzMjkuNDIuMC4w"
+    },
+    {
+      "id": 7,
+      "title": "Lồng họa mi tứ xuyên",
+      "price": 20,
+      "category": "1",
+      "description": "khong co mieu ta ",
+      "material": "go",
+      "size": "20 x 30",
+      "cageType": "square",
+      "color": "yellow",
+      "image": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpg0792ac81-2caa-405c-8f0e-3cc5ca542990?alt=media&token=8742cd90-588e-44b3-ae41-86c512620188&_gl=1*i0caff*_ga*MTkwMTQ4OTg3My4xNjk3NTM3MTY1*_ga_CW55HF8NVT*MTY5ODA4NjMxMS4xMS4xLjE2OTgwODYzMjkuNDIuMC4w"
+    },
+    {
+      "id": 8,
+      "title": "Lồng họa mi quế châu",
+      "price": 20,
+      "category": "1",
+      "description": "abc",
+      "material": "go",
+      "size": "20 x 30",
+      "cageType": "square",
+      "color": "yellow",
+      "image": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpg0792ac81-2caa-405c-8f0e-3cc5ca542990?alt=media&token=8742cd90-588e-44b3-ae41-86c512620188&_gl=1*i0caff*_ga*MTkwMTQ4OTg3My4xNjk3NTM3MTY1*_ga_CW55HF8NVT*MTY5ODA4NjMxMS4xMS4xLjE2OTgwODYzMjkuNDIuMC4w"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Tran Ngoc Tu",
+      "rate": 3,
+      "time": "1",
+      "content": "khong co mieu ta",
+      "productId": "1",
+      "userId": "1"
+    },
+    {
+      "id": 2,
+      "name": "Tran Ngoc Tu 2",
+      "rate": 4,
+      "time": "1",
+      "content": "khong co mieu ta",
+      "productId": "1",
+      "userId": "1"
+    },
+    {
+      "id": 3,
+      "name": "Tran Ngoc Tu 3",
+      "rate": 5,
+      "time": "1",
+      "content": "khong co mieu ta",
+      "productId": "1",
+      "userId": "1"
+    },
+    {
+      "productId": "1",
+      "userId": 1,
+      "rate": "5",
+      "content": "rat thich san pham nay",
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "username": "username 10",
+      "email": "tranngoctu.root@gmail.com",
+      "address": "No 1",
+      "phone": "0366994077",
+      "role": "1",
+      "image": "image 9",
+      "id": "9",
+      "name": "rubedo15",
+      "url": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2FCopy%20of%20pizza3.jpgf4a67937-8387-41b5-86c5-046ea71484ff?alt=media&token=2765675c-50fc-4742-ad22-07d673afce73"
+    },
+    {
+      "username": "username 11",
+      "email": "email 11",
+      "address": "address 11",
+      "phone": 43,
+      "role": 61,
+      "image": "image 11",
+      "id": "11"
+    },
+    {
+      "username": "username 12",
+      "email": "email 12",
+      "address": "address 12",
+      "phone": 88,
+      "role": 36,
+      "image": "image 12",
+      "id": "12"
+    },
+    {
+      "username": "username 13",
+      "email": "email 13",
+      "address": "address 13",
+      "phone": 34,
+      "role": 81,
+      "image": "image 13",
+      "id": "13"
+    },
+    {
+      "username": "username 14",
+      "email": "email 14",
+      "address": "address 14",
+      "phone": 60,
+      "role": 98,
+      "image": "image 14",
+      "id": "14"
+    },
+    {
+      "username": "username 15",
+      "email": "tranngoctu.root@gmail.com",
+      "address": "No",
+      "phone": "0366994077",
+      "role": "2",
+      "image": "image 15",
+      "id": "15",
+      "name": "TranNgocTu",
+      "url": "https://firebasestorage.googleapis.com/v0/b/uploadfile-5943a.appspot.com/o/images%2F319435541_175163225199137_7995044674003378277_n.jpgdf03fc07-5584-4ad7-8572-f9ec0b012397?alt=media&token=95e732c8-9520-431a-a2b7-44abeb94b9bd"
+    },
+    {
+      "username": "username 16",
+      "email": "email 16",
+      "address": "address 16",
+      "phone": 30,
+      "role": 21,
+      "image": "image 16",
+      "id": "16"
+    },
+    {
+      "username": "username 17",
+      "email": "email 17",
+      "address": "address 17",
+      "phone": 77,
+      "role": 5,
+      "image": "image 17",
+      "id": "17"
+    },
+    {
+      "username": "username 18",
+      "email": "email 18",
+      "address": "address 18",
+      "phone": 81,
+      "role": 38,
+      "image": "image 18",
+      "id": "18"
+    },
+    {
+      "username": "username 19",
+      "email": "email 19",
+      "address": "address 19",
+      "phone": 23,
+      "role": 23,
+      "image": "image 19",
+      "id": "19"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "status": "da huy",
+      "date": "1",
+      "method": "OCC",
+      "address": "HCM"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "status": "dang van chuyen",
+      "date": "2",
+      "method": "OCC",
+      "address": "HCM"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "status": "dang cho",
+      "date": "3",
+      "method": "OCC",
+      "address": "HCM"
+    }
+  ]
+}

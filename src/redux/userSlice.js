@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getAllUser = createAsyncThunk("getAllUser", async (args, rejectWithValue) => {
-    const response = await fetch("https://652a8d654791d884f1fd0ee7.mockapi.io/curd");
+    const response = await fetch("https://localhost:44314/api/v1/users");
     try {
         const result = response.json();
         return result;
@@ -12,8 +12,23 @@ export const getAllUser = createAsyncThunk("getAllUser", async (args, rejectWith
 
 })
 
+
+export const getUser = createAsyncThunk("getUser", async (id, rejectWithValue) => {
+    const response = await fetch(`http://localhost:8000/users/${id}`);
+    try {
+        const result = response.json();
+        return result;
+    } catch (error) {
+        return rejectWithValue(error);
+
+    }
+
+})
+
+
 export const deleteUser = createAsyncThunk("deleteUser", async (id, rejectWithValue) => {
-    const response = await fetch(`https://652a8d654791d884f1fd0ee7.mockapi.io/curd/${id}`,{method:"DELETE"});
+    console.log(id);
+    const response = await fetch(`https://localhost:44314/api/v1/users?idTmp=${id}`,{method:"DELETE"});
     try {
         const result = response.json();
         return result;
@@ -26,13 +41,14 @@ export const deleteUser = createAsyncThunk("deleteUser", async (id, rejectWithVa
 
 
 export const createUser = createAsyncThunk("createUser", async (data, { rejectWithValue }) => {
-    const response = await fetch("https://652a8d654791d884f1fd0ee7.mockapi.io/curd", {
+    const response = await fetch("https://localhost:44314/api/v1/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
     });
+    
 
     try {
         const result = await response.json();
@@ -43,7 +59,8 @@ export const createUser = createAsyncThunk("createUser", async (data, { rejectWi
 })
 
 export const updateUser = createAsyncThunk("updateUser", async (data, { rejectWithValue }) => {
-    const response = await fetch(`https://652a8d654791d884f1fd0ee7.mockapi.io/curd/${data.id}`, {
+    console.log(data);
+    const response = await fetch(`https://localhost:44314/api/v1/users`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -64,6 +81,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         listUser: [],
+        UpdateUser:null,
         loading: false,
         error: '',
     },
@@ -80,6 +98,19 @@ const userSlice = createSlice({
             state.error = action.error;
         });
 
+
+        //get a user
+        builder.addCase(getUser.pending, state => {
+            state.loading = true;
+        });
+        builder.addCase(getUser.fulfilled, (state, action) => {
+            state.loading = false;
+            state.UpdateUser = action.payload;
+        });
+        builder.addCase(getUser.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
         //add user
         builder.addCase(createUser.pending, state => {
             state.loading = true;
@@ -100,9 +131,8 @@ const userSlice = createSlice({
             state.loading = false;
             const {id} = action.payload;
             if(id){
-                state.listUser = state.listUser.filter((ele) => ele.id !== id);
+                state.listUser = state.listUser.filter((ele) => ele.userId !== id);
             }
-            console.log(action.payload)
         });
         builder.addCase(deleteUser.rejected, (state, action) => {
             state.loading = false;

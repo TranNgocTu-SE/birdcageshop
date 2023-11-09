@@ -1,26 +1,33 @@
 import React from 'react'
+import ReactPaginate from 'react-paginate';
 
-const Pagination = () => {
+const Pagination = (props) => {
+    const totalPage = props.totalPage;
+    const handlePageClick = (data) => {
+        props.currentPage(data.selected +1);
+    }
     return (
-        <div className='row m-auto'>
-            <nav aria-label="Page navigation example">
-                <ul className="pagination justify-content-center">
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <div>
+            <ReactPaginate 
+                nextLabel={'next'}
+                breakLabel={'...'}
+                pageCount={totalPage}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={3}
+                onPageChange={handlePageClick}
+                containerClassName={'pagination justify-content-end'}
+                pageClassName={'page-item'}
+                pageLinkClassName={'page-link'}
+                previousClassName={'page-item'}
+                previousLinkClassName={'page-link'}
+                nextClassName={'page-item'}
+                nextLinkClassName={'page-link'}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                activeClassName={'active'}
+            />
         </div>
+
     )
 }
 

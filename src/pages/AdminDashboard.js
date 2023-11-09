@@ -18,7 +18,7 @@ const AdminDashboard = () => {
                     <div className='col'>
                         <Home Toggle={Toggle} />
                         
-                        <Pagination />
+                        
                     </div>
                 </div>
             </div>
