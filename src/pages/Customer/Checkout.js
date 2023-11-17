@@ -16,19 +16,19 @@ const Checkout = () => {
         setOrder({ ...order, [e.target.name]: e.target.value })
     }
 
+    console.log(order);
+
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        console.log(order);
         const newOrder = {
             ...order,
             userId: userInfo.userId,
             expectedDeliveryDate: "2023-11-05T13:10:57.617Z",
             totalPrice: cart.cartTotalAmount,
-            address: userInfo.address ?? "",
+            cart : cart,
             state: "HCM",
             voucher: "HCM",
             country: "HCM",
-            method: "HCM",
             comment: "HCM"
 
         }
@@ -47,17 +47,17 @@ const Checkout = () => {
 
                             <input type="hidden" id="userId" name="userId" value={userInfo?.userId} onChange={handleOnChange} />
                             <div className="form-outline my-3">
-                                <input type="text" id="form5Example1" className="form-control" name='username' onChange={handleOnChange} />
+                                <input type="text" id="form5Example1" className="form-control" name='username' onChange={handleOnChange}/>
                                 <label className="form-label" htmlFor="form5Example1">Tên</label>
                             </div>
 
                             <div className="form-outline mb-3">
-                                <input type="text" id="form5Example2" className="form-control" name='phoneNumber' onChange={handleOnChange} />
+                                <input type="text" id="form5Example2" className="form-control" name='phoneNumber' onChange={handleOnChange}/>
                                 <label className="form-label" htmlFor="form5Example2">Số điện thoại</label>
                             </div>
 
                             <div className="form-outline mb-3">
-                                <input type="text" id="form5Example2" className="form-control" name='address' onChange={handleOnChange} />
+                                <input type="text" id="form5Example2" className="form-control" name='address' onChange={handleOnChange}/>
                                 <label className="form-label" htmlFor="form5Example2">Địa chỉ</label>
                             </div>
 
@@ -87,7 +87,7 @@ const Checkout = () => {
                             {cart?.cartItems.map((item, index) => (
                                 <div className='row d-flex align-items-center my-3' key={index}>
                                     <div className='col-md-2 '>
-                                        <img src={LC1} className='img-fluid' />
+                                        <img src={item.image} className='img-fluid' />
                                     </div>
                                     <div className='col-md-7'>
                                         {item?.productName}

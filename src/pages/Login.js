@@ -28,13 +28,13 @@ const Login = () => {
             navigate("/")
         }
         if(userInfo?.roleId === 2){
-            navigate("/homeAdmin")
+            navigate("/homeStaff")
         }
         if(userInfo?.roleId === 3){
             navigate("/homeManager")
         }
         if(userInfo?.roleId === 4){
-            navigate("/homeStaff")
+            navigate("/homeAdmin")
         }
     },[userInfo])
 

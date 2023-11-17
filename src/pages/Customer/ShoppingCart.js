@@ -50,7 +50,7 @@ const ShoppingCart = () => {
                                         <div className="card-body p-2">
                                             <div className="row align-items-center">
                                                 <div className="col-md-2">
-                                                    <img src={LC8}
+                                                    <img src={cartItem.image}
                                                         className="img-fluid" alt="Generic placeholder image" style={{ height: "150px" }} />
                                                 </div>
                                                 <div className="col-md-2 d-flex justify-content-center">

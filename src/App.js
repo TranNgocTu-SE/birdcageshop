@@ -35,6 +35,7 @@ import UpdateUser from './pages/Admin/UpdateUser';
 import Profile from './pages/Admin/Profile';
 import ManagerOrder from './pages/Manager/ManagerOrder';
 import AddProduct from './pages/Manager/AddProduct';
+import ManagerOrderDetail from './pages/Manager/ManagerOrderDetail';
 
 function App() {
 
@@ -75,6 +76,7 @@ function App() {
         <Route path='/recentActivity' element={<RecentActivity />}/>
         <Route path='/editProduct/:id' element={<ProductDetail />}/>
         <Route path='/addProduct' element={<AddProduct />}/>
+        <Route path='/managerOrderDetail/:id' element={<ManagerOrderDetail />}/>
         
       </Routes>
     </div>

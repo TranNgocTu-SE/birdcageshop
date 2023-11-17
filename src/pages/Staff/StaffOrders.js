@@ -3,8 +3,20 @@ import Sidebar from './Sidebar'
 import Navbar from '../Manager/Navbar'
 import { LC1 } from '../../assets/Index'
 import { NavLink } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getOrderByStaff } from '../../redux/orderSlice'
 
 const StaffOrders = () => {
+    const dispatch = useDispatch();
+    const { userInfo } = useSelector((state) => state.auth);
+
+    const { listOrderByStaff } = useSelector((state) => state.order);
+    const id = userInfo.userId;
+    useEffect(() => {
+        dispatch(getOrderByStaff("261c96c4-9aac-40f1-b20a-0bbda3c1588d"));
+    }, [])
+    console.log(userInfo);
     return (
         <div>
             <div className='d-flex'>
@@ -15,71 +27,33 @@ const StaffOrders = () => {
                     <div>
                         <Navbar />
                         <div className='container my-5 p-5'>
-                            <table class="table text-center">
+                            <table className="table text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>
-                                        <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="table-group-divider">
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td><img src={LC1} className='img-fluid rounded-3' width="70px" /></td>
-                                        <td>
-                                            <NavLink to="/orderDetail" className="text-decoration-none">Lồng chim sẻ</NavLink>
-                                        </td>
+                                <tbody className="table-group-divider">
+                                    {listOrderByStaff?.map((order, index) => (
+                                        <tr key={index}>
+                                        <th scope="row"></th>
+                                        <td>Lồng chim sẻ</td>
                                         <td>X1</td>
                                         <td>1.200.000</td>
+
                                         <td>
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hoàn thành</a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Đang làm</a></li>
-                                                <li><a class="dropdown-item" href="#">Hủy</a></li>
-                                                <li><a class="dropdown-item" href="#">Hoàn thành</a></li>
-                                            </ul>
+                                            {order?.orderStatus === 1 ? "Pending" : "Processing"}
+                                        </td>
+                                        <td>
+                                            <NavLink to={`/managerOrderDetail/${order.orderId}`} className="btn btn-outline-success me-4"><i className="fa fa-edit me-2"></i>View</NavLink>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td><img src={LC1} className='img-fluid rounded-3' width="70px" /></td>
-                                        <td>
-                                            <NavLink to="/orderDetail" className="text-decoration-none">Lồng chim chào mào</NavLink>
-                                        </td>
-                                        <td>X1</td>
-                                        <td>1.200.000</td>
-                                        <td>
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hoàn thành</a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Đang làm</a></li>
-                                                <li><a class="dropdown-item" href="#">Hủy</a></li>
-                                                <li><a class="dropdown-item" href="#">Hoàn thành</a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td><img src={LC1} className='img-fluid rounded-3' width="70px" /></td>
-                                        <td>
-                                            <NavLink to="/orderDetail" className="text-decoration-none">Lồng chim khuyên</NavLink>
-                                        </td>
-                                        <td>X1</td>
-                                        <td>1.200.000</td>
-                                        <td>
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Đang làm</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Hoàn thành</a></li>
-                                                <li><a class="dropdown-item" href="#">Hủy</a></li>
-                                                <li><a class="dropdown-item" href="#">Đang làm</a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>

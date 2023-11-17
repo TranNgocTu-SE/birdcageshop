@@ -56,7 +56,6 @@ const ManagerReport = () => {
                             </tbody>
                         </table>
                     </div>
-                    <Pagination />
                 </div>
             </div>
         </div>

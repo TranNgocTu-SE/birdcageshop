@@ -18,7 +18,7 @@ const ProductDetail = () => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        fetch(`https://localhost:44314/api/v1/products/idTmp?idTmp=${id}`)
+        fetch(`http://20.197.41.167/api/v1/products/idTmp?idTmp=${id}`)
             .then(res => res.json())
             .then(result => setUpdateData(result))
     }, [])
@@ -60,7 +60,7 @@ const ProductDetail = () => {
                             <div className='row border  my-5 mx-0 p-3'>
                                 <div className="col">
                                     <div className='row'>
-                                        <img src={LC2} style={{ height: "600px" }} />
+                                        <img src={updateData?.image} style={{ height: "600px" }} />
                                     </div>
                                 </div>
                                 <div className='col-md-6'>

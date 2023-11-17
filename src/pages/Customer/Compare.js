@@ -16,7 +16,7 @@ const Compare = () => {
   const { products, loading, product } = useSelector((state) => state.product);
 
   useEffect(() => {
-    fetch(`https://localhost:44314/api/v1/products/idTmp?idTmp=${id}`)
+    fetch(`http://20.197.41.167/api/v1/products/idTmp=${id}`)
         .then(res => res.json())
         .then(result => setDetailProduct(result))
 }, [])

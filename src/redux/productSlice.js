@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getProducts = createAsyncThunk("getProducts", async (args, rejectWithValue) => {
-    const response = await fetch("https://localhost:44314/api/v1/products");
+    const response = await fetch("http://20.197.41.167/api/v1/products");
     try {
         const result = response.json();
         return result;
@@ -12,7 +12,7 @@ export const getProducts = createAsyncThunk("getProducts", async (args, rejectWi
 })
 
 export const getProductByCategory = createAsyncThunk("getProductByCategory", async (id, rejectWithValue) => {
-    const response = await fetch(`https://localhost:44314/api/v1/products/cateId?cateId=${id}`);
+    const response = await fetch(`http://20.197.41.167/api/v1/products/cateId?cateId=${id}`);
     try {
         const result = response.json();
         return result;
@@ -24,7 +24,7 @@ export const getProductByCategory = createAsyncThunk("getProductByCategory", asy
 
 
 export const getProduct = createAsyncThunk("getProduct", async (id, rejectWithValue) => {
-    const response = await fetch(`https://localhost:44314/api/v1/products/idTmp?idTmp=${id}`);
+    const response = await fetch(`http://20.197.41.167/api/v1/products/idTmp?idTmp=${id}`);
     try {
         const result = response.json();
         return result;
@@ -36,7 +36,7 @@ export const getProduct = createAsyncThunk("getProduct", async (id, rejectWithVa
 
 export const createProduct = createAsyncThunk("createProduct", async (data, { rejectWithValue }) => {
     console.log(data);
-    const response = await fetch("https://localhost:44314/api/v1/products", {
+    const response = await fetch("http://20.197.41.167/api/v1/products", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -45,7 +45,6 @@ export const createProduct = createAsyncThunk("createProduct", async (data, { re
     });
     try {
         const result = await response.json();
-        console.log(result);
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -55,7 +54,7 @@ export const createProduct = createAsyncThunk("createProduct", async (data, { re
 
 
 export const updateProduct = createAsyncThunk("updateProduct", async (data, { rejectWithValue }) => {
-    const response = await fetch(`https://localhost:44314/api/v1/products`, {
+    const response = await fetch(`http://20.197.41.167/api/v1/products`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -72,9 +71,9 @@ export const updateProduct = createAsyncThunk("updateProduct", async (data, { re
 })
 
 export const deleteProduct = createAsyncThunk("deleteProduct", async (id, rejectWithValue) => {
-    const response = await fetch(`https://localhost:44314/api/v1/products?idTmp=${id}`,{method:"DELETE"});
+    const response = await fetch(`http://20.197.41.167/api/v1/products?idTmp=${id}`,{method:"DELETE"});
     try {
-        const result = response.json();
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -90,6 +89,7 @@ const productSlice = createSlice({
         productByCategory: [],
         loading: false,
         product: null,
+        isDeleted : false,
         error: '',
     },
     extraReducers: builder => {
@@ -152,6 +152,7 @@ const productSlice = createSlice({
             if(id){
                 state.products = state.products.filter((ele) => ele.productId !== id);
             }
+            state.isDeleted = !state.isDeleted;
         });
         builder.addCase(deleteProduct.rejected, (state, action) => {
             state.loading = false;

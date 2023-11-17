@@ -9,8 +9,7 @@ import { storage } from '../firebase';
 const AddUser = () => {
     const [user, setUser] = useState({});
     const [image, setImage] = useState(null);
-    const [url,setUrl] = useState('hello');
-   
+
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -19,47 +18,107 @@ const AddUser = () => {
         setUser({ ...user, [e.target.name]: e.target.value });
     }
 
+    {/* 
+    const handleOnChangeFile = (e) => {
+        setImage(e.target.files);
+    }
+
+*/}
     const handleOnChangeFile = (e) => {
         const file = e.target.files[0]
         file.preview = URL.createObjectURL(file);
-        setUrl(file);
         setImage(e.target.files[0]);
     }
 
 
-    const uploadImage = async() => {
+    const uploadImage = async () => {
         const imageRef = ref(storage, `images/${image.name + v4()}`);
         return uploadBytesResumable(imageRef, image)
-          .then(snapshot => {
-            return getDownloadURL(snapshot.ref);
-          })
-          .then(downloadURL => {
-          return downloadURL
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      };
-  
+            .then(snapshot => {
+                return getDownloadURL(snapshot.ref);
+            })
+            .then(downloadURL => {
+                return downloadURL
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+    {/* 
+    const uploadImage = async (img) => {
+        const imageRef = ref(storage, `images/${img.name + v4()}`);
+        return uploadBytesResumable(imageRef, img)
+            .then(snapshot => {
+                return getDownloadURL(snapshot.ref);
+            })
+            .then(downloadURL => {
+                return downloadURL
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
 
+    const imgDownLoad = () => {
+        let results = []
+        for (let img of image) {
+            uploadImage(img)
+                .then(res => {
+                    results.push(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        return results;
+    }
+    */}
+
+    {/* 
+    const multiImage = async (imageFileList) => {
+        const imagesUrlArray = [];
+        for (let i = 0; i < imageFileList.length; i++) {
+            const imageRef = ref(storage, `images/${image.name + v4()}`);
+            const upload = await uploadBytes(imageRef, imageFileList[i]);
+            const imageUrl = await getDownloadURL(imageRef);
+            imagesUrlArray.push(imageUrl);
+        }
+        return imagesUrlArray;
+    };
+
+*/}
 
     const handleSubmit = async (e) => {
-
         e.preventDefault(e);
-        const url2 = await uploadImage();
+        //const url2 = imgDownLoad(image);
+        const url2 = await uploadImage()
         const newUser = {
             username: user.username,
-            image:url2,
-            email:user.email,
-            password:user.password,
-            phoneNumber:user.phoneNumber,
-            role:user.role,
+            password: user.password,
+            phoneNumber: user.phoneNumber,
+            email: user.email,
+            address: user.address,
+            image: url2,
+            roleId: user.roleId? user.roleId : "1",
         }
+        dispatch(createUser(newUser));
+        {/*const url2 = await uploadImage();
+        console.log(url2);
+        const newUser = {
+            username: user.username,
+            image: url2,
+            email: user.email,
+            password: user.password,
+            phoneNumber: user.phoneNumber,
+            role: user.role,
+        } 
         console.log(newUser);
         dispatch(createUser(newUser));
+    */}
+
         navigate('/homeAdmin');
     }
-   
+
     return (
         <div className='container'>
             <section className="vh-100">
@@ -83,6 +142,13 @@ const AddUser = () => {
                                             </div>
 
                                         </div>
+                                        <div className="col mb-2">
+                                            <div className="form-outline">
+                                                <input type="text" id="address" name='address' className="form-control form-control-lg" onChange={handleOnChange} />
+                                                <label className="form-label" htmlFor="address">Address</label>
+                                            </div>
+
+                                        </div>
 
                                         <div className="row">
                                             <div className="col mb-2 d-flex align-items-center">
@@ -99,23 +165,24 @@ const AddUser = () => {
                                             </div>
                                         </div>
                                         <div className='row'>
-                                        <div className="col mb-2 pb-2">
-                                            <div className="form-outline">
-                                                <input type="file" id="file" name='file' className="form-control form-control-lg" onChange={handleOnChangeFile} />
-                                                <label className="form-label" htmlFor="file">Image</label>
+                                            <div className="col mb-2 pb-2">
+                                                <div className="form-outline">
+                                                    <input type="file" id="file" multiple name='file' className="form-control form-control-lg" onChange={handleOnChangeFile} />
+                                                    <label className="form-label" htmlFor="file">Image</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className='col'>
-                                            <img src={url} style={{width:"100px",height:"100px"}}/>
-                                        </div>
+                                            <div className='col'>
+                                                <img src='#' style={{ width: "100px", height: "100px" }} />
+                                            </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-12">
                                                 <label className="form-label select-label me-3">Role</label>
-                                                <select className="select form-control-md" name='role' onChange={handleOnChange}>
-                                                    <option value="3">Manager</option>
-                                                    <option value="4">Staff</option>
-                                                    <option value="1">Customer</option>
+                                                <select className="select form-control-md" name='roleId' defaultValue={1} onChange={handleOnChange}>
+                                                    <option value={4}>Admin</option>
+                                                    <option value={3}>Manager</option>
+                                                    <option value={2}>Staff</option>
+                                                    <option value={1}>Customer</option>
                                                 </select>
                                             </div>
                                         </div>

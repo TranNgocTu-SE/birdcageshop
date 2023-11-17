@@ -16,11 +16,7 @@ const Profile = () => {
     const {userInfo} = useSelector((state) => state.auth);
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    useEffect(() => {
-        
-    }, [])
-    console.log(updateData);
+    console.log(userInfo);
     
     const handleOnChange = (e) => {
         setUpdateData({ ...updateData, [e.target.name]: e.target.value })
@@ -29,10 +25,19 @@ const Profile = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(updateUser(updateData));
+        const newUser = {
+            ...updateData,
+            userId : userInfo.userId,
+            username : userInfo.username,
+            email : userInfo.email,
+            phoneNumber : userInfo.phoneNumber,
+            address : userInfo.address,
+            image : userInfo.image
+        }
+        console.log(newUser);
+        dispatch(updateUser(newUser));
         navigate("/homeAdmin")
     }
-
 
     return (
         <div>
@@ -48,10 +53,8 @@ const Profile = () => {
                                 <div className="col-4">
                                     <div className="card mb-4">
                                         <div className="card-body text-center">
-                                            <img src={Avatar} alt="avatar"
+                                            <img src={userInfo.image} alt="avatar"
                                                 className="rounded-circle img-fluid" style={{ width: "150px" }} />
-                                            <h5 className="my-3">{userInfo.username}</h5>
-                                            <p className="text-muted mb-1">Full Stack Developer</p>
                                         </div>
                                     </div>
                                 </div>
@@ -60,19 +63,25 @@ const Profile = () => {
                                     <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Name</label>
                                             <div className="col-sm-10">
-                                                <input type="text" className="form-control" id="inputEmail3" name='username' onChange={handleOnChange} value={userInfo && userInfo.username || ""}/>
+                                                <input type="text" className="form-control" id="inputEmail3" name='username' onChange={handleOnChange} defaultValue={userInfo?.username}/>
                                             </div>
                                         </div>
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
                                             <div className="col-sm-10">
-                                                <input type="text" className="form-control" id="inputEmail3" name='email' onChange={handleOnChange} value={userInfo && userInfo.email || ""} />
+                                                <input type="text" className="form-control" id="inputEmail3" name='email' onChange={handleOnChange} defaultValue={userInfo.email} />
                                             </div>
                                         </div>
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Phone</label>
                                             <div className="col-sm-10">
-                                                <input type="text" className="form-control" id="inputEmail3" name='phoneNumber' onChange={handleOnChange} value={userInfo && userInfo.phoneNumber || ""}/>
+                                                <input type="text" className="form-control" id="inputEmail3" name='phoneNumber' onChange={handleOnChange} defaultValue={userInfo.phoneNumber}/>
+                                            </div>
+                                        </div>
+                                        <div className="row mb-3">
+                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Address</label>
+                                            <div className="col-sm-10">
+                                                <input type="text" className="form-control" id="inputEmail3" name='address' onChange={handleOnChange} defaultValue={userInfo.address}/>
                                             </div>
                                         </div>
                                         <button type="submit" className="btn btn-outline-success pull-right">Update</button>

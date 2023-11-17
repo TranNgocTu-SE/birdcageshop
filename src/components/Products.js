@@ -17,7 +17,7 @@ const Products = () => {
         <div>
             <div className='container d-flex flex-column min-vh-100 mt-4'>
                 <div className='row pb-4'>
-                    {products && products.map((product, index) => (
+                    {products?.filter((e) => e.status === 1).map((product, index) => (
                         <div className='col-md-3'key={index}>
                             <div className="card my-2" >
                                 <img src={product.image} className="card-img-top" height="300px" alt="..." />

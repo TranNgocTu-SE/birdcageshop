@@ -7,12 +7,12 @@ import { LC1 } from '../../assets/Index';
 const ListProducts = () => {
 
 
-    const { products } = useSelector((state) => state.product);
+    const { products,isDeleted } = useSelector((state) => state.product);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getProducts());
-    }, [])
+    }, [isDeleted])
 
     return (
         <div>

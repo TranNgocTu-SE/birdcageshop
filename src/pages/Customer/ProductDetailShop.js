@@ -19,7 +19,7 @@ const ProductDetailShop = () => {
         dispatch(getProduct(id));
     }, [])
 
-
+    console.log(product);
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product));

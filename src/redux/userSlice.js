@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getAllUser = createAsyncThunk("getAllUser", async (args, rejectWithValue) => {
-    const response = await fetch("https://localhost:44314/api/v1/users");
+    const response = await fetch("http://20.197.41.167/api/v1/users");
     try {
-        const result = response.json();
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -16,7 +16,7 @@ export const getAllUser = createAsyncThunk("getAllUser", async (args, rejectWith
 export const getUser = createAsyncThunk("getUser", async (id, rejectWithValue) => {
     const response = await fetch(`http://localhost:8000/users/${id}`);
     try {
-        const result = response.json();
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -27,10 +27,9 @@ export const getUser = createAsyncThunk("getUser", async (id, rejectWithValue) =
 
 
 export const deleteUser = createAsyncThunk("deleteUser", async (id, rejectWithValue) => {
-    console.log(id);
-    const response = await fetch(`https://localhost:44314/api/v1/users?idTmp=${id}`,{method:"DELETE"});
+    const response = await fetch(`http://20.197.41.167/api/v1/users?idTmp=${id}`, { method: "DELETE" });
     try {
-        const result = response.json();
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -41,15 +40,13 @@ export const deleteUser = createAsyncThunk("deleteUser", async (id, rejectWithVa
 
 
 export const createUser = createAsyncThunk("createUser", async (data, { rejectWithValue }) => {
-    const response = await fetch("https://localhost:44314/api/v1/users", {
+    const response = await fetch("http://20.197.41.167/api/v1/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
     });
-    
-
     try {
         const result = await response.json();
         return result;
@@ -59,8 +56,7 @@ export const createUser = createAsyncThunk("createUser", async (data, { rejectWi
 })
 
 export const updateUser = createAsyncThunk("updateUser", async (data, { rejectWithValue }) => {
-    console.log(data);
-    const response = await fetch(`https://localhost:44314/api/v1/users`, {
+    const response = await fetch(`http://20.197.41.167/api/v1/users`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -81,8 +77,10 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         listUser: [],
-        UpdateUser:null,
+        UpdateUser: null,
         loading: false,
+        isDeleted: false,
+        isUpdated: false,
         error: '',
     },
     extraReducers: builder => {
@@ -129,10 +127,7 @@ const userSlice = createSlice({
         });
         builder.addCase(deleteUser.fulfilled, (state, action) => {
             state.loading = false;
-            const {id} = action.payload;
-            if(id){
-                state.listUser = state.listUser.filter((ele) => ele.userId !== id);
-            }
+            state.isDeleted = !state.isDeleted;
         });
         builder.addCase(deleteUser.rejected, (state, action) => {
             state.loading = false;
@@ -145,9 +140,10 @@ const userSlice = createSlice({
         });
         builder.addCase(updateUser.fulfilled, (state, action) => {
             state.loading = false;
-            state.listUser = state.listUser.map((ele) => 
+            state.listUser = state.listUser.map((ele) =>
                 ele.id === action.payload.id ? action.payload : ele
             );
+            state.isUpdated = !state.isUpdated;
         });
         builder.addCase(updateUser.rejected, (state, action) => {
             state.loading = false;

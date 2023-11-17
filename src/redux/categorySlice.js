@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getCategories = createAsyncThunk("getCategories", async (args, rejectWithValue) => {
-    const response = await fetch("https://localhost:44314/api/v1/birdtype");
+    const response = await fetch("http://20.197.41.167/api/v1/birdtype");
     try {
         const result = response.json();
         return result;

@@ -6,18 +6,32 @@ import productSlice from './productSlice';
 import reviewSlice from './reviewSlice';
 import orderSlice from './orderSlice';
 import categorySlice from './categorySlice';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
+import { combineReducers } from '@reduxjs/toolkit';
 
+const persistConfig = {
+    key: 'root',
+    storage,
+}
 
-const store =configureStore({
-    reducer: {
-        users : userSlice,
-        auth : authSlice,
-        cart: cartSlice,
-        product: productSlice,
-        review : reviewSlice,
-        order : orderSlice,
-        category : categorySlice
-    }
+const rootReducer = combineReducers({
+    users: userSlice,
+    auth: authSlice,
+    cart: cartSlice,
+    product: productSlice,
+    review: reviewSlice,
+    order: orderSlice,
+    category: categorySlice
 })
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+export const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false,
+      }),
+})
+
+export const persistor = persistStore(store)

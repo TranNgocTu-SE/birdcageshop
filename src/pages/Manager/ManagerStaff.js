@@ -42,7 +42,7 @@ const ManagerStaff = () => {
                                 <tr key={index}>
                                 <td>M12345</td>
                                 <td>{user.username}</td>
-                                <td><img src={Avatar} style={{width:"100px",height:"100px"}}/></td>
+                                <td><img src={user.image} style={{width:"100px",height:"100px"}}/></td>
                                 <td>Nam</td>
                                 <td>Trong tháng này : 20 đơn hàng</td>
                                 <td>MS10828943fdsd,<br/>MK21423vvscd5,<br/>CN1424554454</td>

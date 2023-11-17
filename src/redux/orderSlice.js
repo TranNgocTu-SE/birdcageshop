@@ -4,7 +4,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
 export const getOrders = createAsyncThunk("getOrders", async (args, rejectWithValue) => {
-    const response = await fetch("https://localhost:44314/api/v1/orders");
+    const response = await fetch("http://20.197.41.167/api/v1/orders");
+    try {
+        const result = response.json();
+        return result;
+    } catch (error) {
+        return rejectWithValue(error);
+
+    }
+
+})
+
+export const getOrderByStaff = createAsyncThunk("getOrderByStaff", async (id, rejectWithValue) => {
+    const response = await fetch(`http://20.197.41.167/api/v1/orders/empId?idTmp=${id}`);
     try {
         const result = response.json();
         return result;
@@ -17,7 +29,7 @@ export const getOrders = createAsyncThunk("getOrders", async (args, rejectWithVa
 
 
 export const createOrderRequest = createAsyncThunk("createOrderRequest", async (data, { rejectWithValue }) => {
-    const response = await fetch("https://localhost:44314/api/v1/orders", {
+    const response = await fetch("http://20.197.41.167/api/v1/orders", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -35,7 +47,7 @@ export const createOrderRequest = createAsyncThunk("createOrderRequest", async (
 //update status order 
 export const updateOrderStatus = createAsyncThunk("updateOrderStatus", async (data, { rejectWithValue }) => {
     console.log(data);
-    const response = await fetch(`https://localhost:44314/api/v1/orders/orderId`, {
+    const response = await fetch(`http://20.197.41.167/api/v1/orders/orderId`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -53,7 +65,7 @@ export const updateOrderStatus = createAsyncThunk("updateOrderStatus", async (da
 
 export const assignForStaff = createAsyncThunk("assignForStaff", async (data, { rejectWithValue }) => {
     console.log(data);
-    const response = await fetch(`https://localhost:44314/api/v1/orders/orderId/assigned-employee`, {
+    const response = await fetch(`http://20.197.41.167/api/v1/orders/orderId/assigned-employee`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -76,7 +88,8 @@ const orderSlice = createSlice({
         UpdateOrder:null,
         loading: false,
         error: '',
-        success: false
+        success: false,
+        listOrderByStaff :[]
     },
     extraReducers: builder => {
         builder.addCase(getOrders.pending, state => {
@@ -87,6 +100,19 @@ const orderSlice = createSlice({
             state.listOrders = action.payload;
         });
         builder.addCase(getOrders.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // get all orders by staff
+        builder.addCase(getOrderByStaff.pending, state => {
+            state.loading = true;
+        });
+        builder.addCase(getOrderByStaff.fulfilled, (state, action) => {
+            state.loading = false;
+            state.listOrderByStaff = action.payload;
+        });
+        builder.addCase(getOrderByStaff.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });

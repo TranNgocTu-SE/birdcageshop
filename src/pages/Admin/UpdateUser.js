@@ -16,7 +16,7 @@ const UpdateUser = () => {
 
 
     useEffect(() => {
-        fetch(`https://localhost:44314/api/v1/users/idTmp?idTmp=${id}`)
+        fetch(`http://20.197.41.167/api/v1/users/idTmp?idTmp=${id}`)
             .then(res => res.json())
             .then(result => setUpdateData(result))
     }, [])
@@ -73,9 +73,10 @@ const UpdateUser = () => {
                                             <div className="row">
                                                 <div className="col-12">
                                                     <label className="form-label select-label me-3">Role</label>
-                                                    <select className="select form-control-md" onChange={handleOnChange} value={updateData && updateData.role || ""}>
+                                                    <select className="select form-control-md" name='roleId' onChange={handleOnChange} value={updateData?.roleId}>
+                                                        <option value="4">Admin</option>
                                                         <option value="3">Manager</option>
-                                                        <option value="4">Staff</option>
+                                                        <option value="2">Staff</option>
                                                         <option value="1">Customer</option>
                                                     </select>
                                                 </div>

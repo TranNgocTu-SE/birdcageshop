@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+    const { userInfo } = useSelector((state) => state.auth);
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,7 +22,7 @@ const Navbar = () => {
                             </div>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white" aria-current="page" href="#">Trần Văn A</a>
+                                <a className="nav-link text-white" aria-current="page" href="#">{userInfo?.username}</a>
                             </li>
                         </ul>
                         

@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import { assignForStaff, getOrders, updateOrderStatus } from '../../redux/orderSlice';
 import { LC1 } from '../../assets/Index';
+import { NavLink } from 'react-router-dom';
 
 const ManagerOrder = () => {
 
@@ -17,7 +18,7 @@ const ManagerOrder = () => {
 
 
     const handleOnChange = (e) => {
-       return e.target.value;
+        return e.target.value;
     }
 
     return (
@@ -47,9 +48,8 @@ const ManagerOrder = () => {
                                     <thead>
                                         <tr>
                                             <th scope="col"></th>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Time</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
@@ -58,20 +58,17 @@ const ManagerOrder = () => {
                                     <tbody className="table-group-divider">
                                         {listOrders?.filter((e) => e.orderStatus === 1).map((order, index) => (
                                             <tr key={index}>
-                                                <th scope="row">1</th>
-                                                <td><img src={LC1} className='img-fluid rounded-3' width="70px" /></td>
-                                                <td>Lồng chim sẻ</td>
-                                                <td>X1</td>
-                                                <td>1.200.000</td>
+                                                <th scope="row"></th>
+                                                <td>{order.orderId}</td>
+                                                <td>{order.orderDate}</td>
+                                                <td>{order.totalPrice}</td>
 
                                                 <td>
                                                     {order?.orderStatus === 1 ? "Pending" : "Processing"}
                                                 </td>
                                                 <td>
-                                                    <button className='btn btn-outline-success me-3' onClick={() => dispatch(updateOrderStatus({ orderId: order.orderId, orderStatus: "Processing" }))}>Chấp nhận</button>
-                                                    <button className='btn btn-outline-danger' onClick={() => dispatch(updateOrderStatus({ orderId: order.orderId, orderStatus: "Cancelled"}))}>Từ chối</button>
+                                                    <NavLink to={`/managerOrderDetail/${order.orderId}`} className="btn btn-outline-success me-4"><i className="fa fa-edit me-2"></i>View</NavLink>
                                                 </td>
-
                                             </tr>
                                         ))}
                                     </tbody>
@@ -113,27 +110,25 @@ const ManagerOrder = () => {
                                     <thead>
                                         <tr>
                                             <th scope="col"></th>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Task</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-group-divider">
                                         {listOrders?.filter((e) => e.orderStatus === 2).map((order, index) => (
                                             <tr key={index}>
                                                 <th scope="row">1</th>
-                                                <td><img src={LC1} className='img-fluid rounded-3' width="70px" /></td>
-                                                <td>Lồng chim sẻ</td>
-                                                <td>X1</td>
+                                                <td>{order.orderId}</td>
+                                                <td>{order.orderDate}</td>
                                                 <td>{order.totalPrice}</td>
-                                                <td>{order.orderStatus}</td>
+                                                <td>Đã đặt</td>
                                                 <td>
-                                                    <select className="form-select" id="inlineFormSelectPref" onChange={(e) => dispatch(assignForStaff({orderId:order.orderId,userId:e.target.value}))}>
+                                                    <select className="form-select" id="inlineFormSelectPref" defaultValue={order.assignedEmp} onChange={(e) => dispatch(assignForStaff({ orderId: order.orderId, userId: e.target.value }))}>
                                                         <option defaultValue={1}>Nhân viên</option>
-                                                        {listUser?.filter((e) => e.roleId === 4).map((user, index) => (
+                                                        {listUser?.filter((e) => e.roleId === 2).map((user, index) => (
                                                             <option value={user.userId} key={index}>{user.username}</option>
                                                         ))}
                                                     </select>
