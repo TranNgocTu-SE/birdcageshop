@@ -1,9 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getReviews = createAsyncThunk("getReviews", async (id, rejectWithValue) => {
-    const response = await fetch(`http://localhost:8000/products/${id}/reviews`);
+    const response = await fetch(`http://20.197.41.167/api/v1/review/productId?productId=${id}`);
     try {
-        const result = response.json();
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        return rejectWithValue(error);
+    }
+
+})
+
+export const getReviewById = createAsyncThunk("getReviewById", async (id, rejectWithValue) => {
+    const response = await fetch(`http://20.197.41.167/api/v1/review/productId?productId=${id}`);
+    try {
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -13,7 +24,7 @@ export const getReviews = createAsyncThunk("getReviews", async (id, rejectWithVa
 
 
 export const createReview = createAsyncThunk("createReview", async (data, { rejectWithValue }) => {
-    const response = await fetch("http://localhost:8000/reviews", {
+    const response = await fetch("http://20.197.41.167/api/v1/review", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -36,6 +47,7 @@ const reviewSlice = createSlice({
         reviews: [],
         loading: false,
         error: '',
+        reviewById: []
     },
     extraReducers: builder => {
         builder.addCase(getReviews.pending, state => {
@@ -46,6 +58,19 @@ const reviewSlice = createSlice({
             state.reviews = action.payload;
         });
         builder.addCase(getReviews.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        //get review by id 
+        builder.addCase(getReviewById.pending, state => {
+            state.loading = true;
+        });
+        builder.addCase(getReviewById.fulfilled, (state, action) => {
+            state.loading = false;
+            state.reviewById = action.payload;
+        });
+        builder.addCase(getReviewById.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });

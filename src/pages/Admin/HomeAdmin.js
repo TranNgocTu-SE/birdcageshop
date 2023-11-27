@@ -42,7 +42,6 @@ const HomeAdmin = () => {
     }
 
 
-
     let totalPage = Math.ceil(listUser.length / limit);
 
 
@@ -52,9 +51,7 @@ const HomeAdmin = () => {
     }
 
     console.log(listUser);
-
-
-
+    
     return (
         <div>
             <div className='d-flex'>
@@ -70,9 +67,9 @@ const HomeAdmin = () => {
                                     <NavLink to="/addUser" className="btn btn-outline-success"><i className="bi bi-plus-square me-2"></i>Add</NavLink>
                                 </div>
 
-                                <table className="table caption-top bg-white rounded text-center">
+                                <table className="table table-bordered mt-4">
                                     <caption className='text-white fs-4'>List of Manager</caption>
-                                    <thead>
+                                    <thead className='table-dark'>
                                         <tr>
                                             <th scope="col">Name</th>
                                             <th scope="col">Image</th>

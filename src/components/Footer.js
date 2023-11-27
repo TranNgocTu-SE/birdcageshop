@@ -2,17 +2,27 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='mt-auto'>
-            <div className='bg-dark text-white '>
-                <div className='container'>
-                    <div className='text-center'>
-                        © 2023<br />
+        <div>
+            <footer id="mu-footer">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="mu-footer-area">
+                                <div className="mu-footer-social">
+                                    <a href="#"><span className="fa fa-facebook"></span></a>
+                                    <a href="#"><span className="fa fa-twitter"></span></a>
+                                    <a href="#"><span className="fa fa-google-plus"></span></a>
+                                    <a href="#"><span className="fa fa-linkedin"></span></a>
+                                    <a href="#"><span className="fa fa-youtube"></span></a>
+                                </div>
+                                <div className="mu-footer-copyright">
+                                    <p>&copy; Copyright. All right reserved.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    Địa chỉ: So 3, Duong 379, Tang Nhon Phu A, Q9,TP HCM.<br />
-                    Nguoi Lien he : Tran Ngoc Tu<br />
-                    Điện thoại liên hệ: 024 73081221 (ext 4678)
                 </div>
-            </div>
+            </footer>
         </div>
     )
 }

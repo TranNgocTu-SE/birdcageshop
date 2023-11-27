@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const Complete = () => {
     return (
         <div className='row d-flex h-100 mt-5'>
-                <div className='text-center' style={{marginTop:"200px"}}>
+                <div className='text-center' style={{marginTop:"100px",marginBottom:"121px"}}>
                     <div className="card w-50 mx-auto">
                         <div className="card-body">
                             <h5 className="card-title my-4">Đơn hàng của bạn đã được gửi thành công</h5>

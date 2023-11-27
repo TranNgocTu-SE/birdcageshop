@@ -12,11 +12,9 @@ const StaffOrders = () => {
     const { userInfo } = useSelector((state) => state.auth);
 
     const { listOrderByStaff } = useSelector((state) => state.order);
-    const id = userInfo.userId;
     useEffect(() => {
-        dispatch(getOrderByStaff("261c96c4-9aac-40f1-b20a-0bbda3c1588d"));
+        dispatch(getOrderByStaff(userInfo.userId));
     }, [])
-    console.log(userInfo);
     return (
         <div>
             <div className='d-flex'>
@@ -27,35 +25,56 @@ const StaffOrders = () => {
                     <div>
                         <Navbar />
                         <div className='container my-5 p-5'>
-                            <table className="table text-center">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="table-group-divider">
-                                    {listOrderByStaff?.map((order, index) => (
-                                        <tr key={index}>
-                                        <th scope="row"></th>
-                                        <td>Lồng chim sẻ</td>
-                                        <td>X1</td>
-                                        <td>1.200.000</td>
-
-                                        <td>
-                                            {order?.orderStatus === 1 ? "Pending" : "Processing"}
-                                        </td>
-                                        <td>
-                                            <NavLink to={`/managerOrderDetail/${order.orderId}`} className="btn btn-outline-success me-4"><i className="fa fa-edit me-2"></i>View</NavLink>
-                                        </td>
-                                    </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                        <table className="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Created</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-group-divider">
+                        {listOrderByStaff?.map((order, index) => (
+                            <tr key={index}>
+                                <td>{order.orderId}</td>
+                                <th>{order.userName}</th>
+                                <td>{order.totalPrice}</td>
+                                <td>
+                                    {(() => {
+                                        if (order.orderStatus === 1) {
+                                            return (
+                                                <div>Pending</div>
+                                            )
+                                        } else if (order.orderStatus === 2) {
+                                            return (
+                                                <div>Processing</div>
+                                            )
+                                        } else if (order.orderStatus === 3) {
+                                            return (
+                                                <div>Shipped</div>
+                                            )
+                                        }else if (order.orderStatus === 4) {
+                                            return (
+                                                <div>Delivered</div>
+                                            )
+                                        }else if (order.orderStatus === 5) {
+                                            return (
+                                                <div>Cancelled</div>
+                                            )
+                                        }
+                                    })()}
+                                </td>
+                                <td>{order.orderDate}</td>
+                                <td>
+                                    <NavLink to={`/staffOrderDetail/${order.orderId}`} className="btn btn-outline-success me-4"><i className="fa fa-edit me-2"></i>View</NavLink>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
                         </div>
                     </div>
                 </div>

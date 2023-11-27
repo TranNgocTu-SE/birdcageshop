@@ -27,7 +27,6 @@ const Register = () => {
 
   return (
     <div>
-      <section className="bg-dark">
         <div className="container p-5">
           <div className="row d-flex justify-content-center align-items-center">
             <div className="col">
@@ -70,7 +69,6 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </section>
     </div>
   )
 }

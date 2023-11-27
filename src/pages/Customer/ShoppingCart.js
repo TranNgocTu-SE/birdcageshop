@@ -34,10 +34,8 @@ const ShoppingCart = () => {
 
     return (
         <div>
-            <Header />
-            <section className="vh-100 bg-white">
-                <div className="container h-100">
-                    <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="container mb-5">
+                    <div className="row d-flex justify-content-center align-items-center vh-100">
                         <div className="col">
                             <p><span className="h2">Shopping Cart </span><span className="h4">(1 item in your cart)</span></p>
                             {cart.cartItems.length === 0 ? (
@@ -79,7 +77,7 @@ const ShoppingCart = () => {
                                                 <div className="col-md-1 d-flex justify-content-center">
                                                     <div>
                                                         <p className="small mb-2 pb-2">Price</p>
-                                                        <p className="lead fw-normal mb-0">{cartItem.price * cartItem.cartQuantity}</p>
+                                                        <p className="lead fw-normal mb-0">{cartItem.price}</p>
                                                     </div>
                                                 </div>
 
@@ -130,8 +128,6 @@ const ShoppingCart = () => {
                         </div>
                     </div>
                 </div>
-            </section>
-            <Footer />
         </div>
     )
 }

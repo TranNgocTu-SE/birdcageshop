@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../components/Header'
 import Promotion from '../../components/Promotion'
 import Products from '../../components/Products'
@@ -7,12 +7,7 @@ import Pagination from '../../components/Pagination'
 
 const Home = () => {
   return (
-    <div className='min-vh-100'>
-         <Header />
-         <Promotion />
-         <Products />
-         
-         <Footer />
+    <div className='home'>
     </div>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
-import { Sale } from '../assets/Index';
+import { Ads, Sale } from '../assets/Index';
 
 const Promotion = () => {
     return (
         <div className='container'>
-            <div className='mt-1'>
+            <div className='my-3'>
                 <div id="carouselExampleCaptions" className="carousel slide">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -13,24 +13,18 @@ const Promotion = () => {
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src={Sale} className="d-block w-100" style={{ height: "200px" }} alt="..." />
+                            <img src={Ads} className="d-block w-100" style={{ height: "200px" }} alt="..." />
                             <div className="carousel-caption d-none d-md-block text-dark text-start">
-                                <h1>Sale off</h1>
-                                <h1>20%</h1>
                             </div>
                         </div>
                         <div className="carousel-item active">
-                            <img src={Sale} className="d-block w-100" style={{ height: "200px" }} alt="..." />
+                            <img src={Ads} className="d-block w-100" style={{ height: "200px" }} alt="..." />
                             <div className="carousel-caption d-none d-md-block text-dark text-start">
-                                <h1>Sale off</h1>
-                                <h1>20%</h1>
                             </div>
                         </div>
                         <div className="carousel-item active">
-                            <img src={Sale} className="d-block w-100" style={{ height: "200px" }} alt="..." />
+                            <img src={Ads} className="d-block w-100" style={{ height: "200px" }} alt="..." />
                             <div className="carousel-caption d-none d-md-block text-dark text-start">
-                                <h1>Sale off</h1>
-                                <h1>20%</h1>
                             </div>
                         </div>
                     </div>

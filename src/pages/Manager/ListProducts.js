@@ -17,8 +17,8 @@ const ListProducts = () => {
     return (
         <div>
             <div className='p-5 text-center'>
-                <table className="table table-Light table-striped border border-success ">
-                    <thead>
+                <table className="table table-Light border border-success ">
+                    <thead className='table-dark'>
                         <tr>
                             <th scope="col">Image</th>
                             <th scope="col">Name</th>

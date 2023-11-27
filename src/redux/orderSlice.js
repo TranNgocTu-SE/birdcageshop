@@ -6,7 +6,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getOrders = createAsyncThunk("getOrders", async (args, rejectWithValue) => {
     const response = await fetch("http://20.197.41.167/api/v1/orders");
     try {
-        const result = response.json();
+        const result =await response.json();
+        return result;
+    } catch (error) {
+        return rejectWithValue(error);
+
+    }
+
+})
+
+export const getOrder = createAsyncThunk("getOrder", async (id, rejectWithValue) => {
+    const response = await fetch(`http://20.197.41.167/api/v1/orders/orderId?idTmp=${id}`);
+    try {
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -26,6 +38,33 @@ export const getOrderByStaff = createAsyncThunk("getOrderByStaff", async (id, re
     }
 
 })
+
+
+export const getOrderByCustomer = createAsyncThunk("getOrderByCustomer", async (id, rejectWithValue) => {
+    const response = await fetch(`http://20.197.41.167/api/v1/orders/userId?idTmp=${id}`);
+    try {
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        return rejectWithValue(error);
+
+    }
+
+})
+
+export const getOrderDetailByOrder = createAsyncThunk("getOrderDetailByOrder", async (id, rejectWithValue) => {
+    const response = await fetch(`http://20.197.41.167/api/v1/orderdetails/orderId?orderId=${id}`);
+    try {
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        return rejectWithValue(error);
+
+    }
+
+})
+
+
 
 
 export const createOrderRequest = createAsyncThunk("createOrderRequest", async (data, { rejectWithValue }) => {
@@ -89,7 +128,10 @@ const orderSlice = createSlice({
         loading: false,
         error: '',
         success: false,
-        listOrderByStaff :[]
+        listOrderByStaff :[],
+        OrderDetailByOrder: [],
+        OrderByCustomer : [],
+        order:{},
     },
     extraReducers: builder => {
         builder.addCase(getOrders.pending, state => {
@@ -100,6 +142,45 @@ const orderSlice = createSlice({
             state.listOrders = action.payload;
         });
         builder.addCase(getOrders.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // get all orders detail by orderId
+        builder.addCase(getOrderDetailByOrder.pending, state => {
+            state.loading = true;
+        });
+        builder.addCase(getOrderDetailByOrder.fulfilled, (state, action) => {
+            state.loading = false;
+            state.OrderDetailByOrder = action.payload;
+        });
+        builder.addCase(getOrderDetailByOrder.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        //get order
+        builder.addCase(getOrder.pending, state => {
+            state.loading = true;
+        });
+        builder.addCase(getOrder.fulfilled, (state, action) => {
+            state.loading = false;
+            state.order = action.payload;
+        });
+        builder.addCase(getOrder.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // get order for customer
+        builder.addCase(getOrderByCustomer.pending, state => {
+            state.loading = true;
+        });
+        builder.addCase(getOrderByCustomer.fulfilled, (state, action) => {
+            state.loading = false;
+            state.OrderByCustomer = action.payload;
+        });
+        builder.addCase(getOrderByCustomer.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });

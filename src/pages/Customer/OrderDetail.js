@@ -1,182 +1,87 @@
-import React from 'react'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import { LC1 } from '../../assets/Index'
+import React, { useEffect } from 'react'
+import { getOrder, getOrderDetailByOrder } from '../../redux/orderSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 
 const OrderDetail = () => {
+
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const { OrderDetailByOrder, order } = useSelector((state) => state.order);
+    const [total, setTotal] = useState();
+    const x = 0;
+    useEffect(() => {
+        dispatch(getOrderDetailByOrder(id));
+        dispatch(getOrder(id));
+    }, [])
+
     return (
-        <div>
-            <Header />
-           <div className='row gradient-custom'>
-           <div className="" >
-                <div className="container py-2 h-100">
-                    <div className="row d-flex justify-content-center h-100">
-                        <div className="col">
-                            <div className="card card-stepper" style={{ borderRadius: "10px" }}>
-                                <div className="card-body p-2">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="d-flex flex-column">
-                                            <span className="lead fw-normal">Your order has been delivered</span>
-                                            <span className="text-dark small">by DHFL on 21 Jan, 2020</span>
+        <div className="container py-5 ">
+            <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="col">
+                    <div className="card rounded-4" >
+                        <div className="card-header px-4 py-3">
+                            <h5 className="text-dark mb-0"><span style={{ color: "green" }}>Products</span></h5>
+                        </div>
+                        <div className="card-body">
+                            <div className="d-flex justify-content-between align-items-center">
+                                <p className="fw-normal" style={{ color: "green" }}>Voucher : None</p>
+                            </div>
+                            <div className="card shadow-0 border">
+                                {OrderDetailByOrder?.map((orderDetail, index) => (
+                                    <div className="card-body" style={{margin:"0"}} key={index}>
+                                        <div className="row">
+                                            <div className="col-md-2">
+                                                <img src={orderDetail.image}
+                                                    className="img-fluid" alt="Phone" style={{ width: "100px", height: "140px" }} />
+                                            </div>
+                                            <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <div className="text-dark mb-0 small">{orderDetail.productName}</div>
+                                            </div>
+                                            <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p className="text-dark mb-0 small">Price: {orderDetail.price}</p>
+                                            </div>
+                                            <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p className="text-dark mb-0 small">Quantity: {orderDetail.quantity}</p>
+                                            </div>
+                                            <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p className="text-dark mb-0 small">Total: {orderDetail.price * orderDetail.quantity}</p>
+                                            </div>
+                                            <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p className="text-dark mb-0 small">
+                                                    {order.orderStatus === 4 ? <NavLink to={`/review/${orderDetail.productId}`} className="btn btn-outline-success me-4"><i className="fa fa-edit me-2"></i>Rate</NavLink> : <div></div>}
+                                                </p>
+                                            </div>
                                         </div>
+                                        <hr className="mb-0" style={{ backgroundColor: "#e0e0e0", opacity: "1" }} />
                                     </div>
-                                    <hr className="my-2" />
-                                    <div className="d-flex flex-row justify-content-between align-items-center align-content-center">
-                                        <span className="dot"></span>
-                                        <hr className="flex-fill track-line" /><span className="dot"></span>
-                                        <hr className="flex-fill track-line" /><span className="dot"></span>
-                                        <hr className="flex-fill track-line" /><span className="dot"></span>
-                                        <hr className="flex-fill track-line" /><span
-                                            className="d-flex justify-content-center align-items-center big-dot dot">
-                                            <i className="fa fa-check text-white"></i></span>
-                                    </div>
-                                    <div className="d-flex flex-row justify-content-between align-items-center">
-                                        <div className="d-flex flex-column align-items-start"><span>15 Mar</span><span>Order placed</span>
-                                        </div>
-                                        <div className="d-flex flex-column justify-content-center"><span>15 Mar</span><span>Order
-                                            placed</span></div>
-                                        <div className="d-flex flex-column justify-content-center align-items-center"><span>15
-                                            Mar</span><span>Order Dispatched</span></div>
-                                        <div className="d-flex flex-column align-items-center"><span>15 Mar</span><span>Out for
-                                            delivery</span></div>
-                                        <div className="d-flex flex-column align-items-end"><span>15 Mar</span><span>Delivered</span></div>
-                                    </div>
+                                ))}
+
+                            </div>
+                            <div className="row mt-4">
+                                <p className="fw-bold">Order Details</p>
+                                <div className='col-2'>
+                                    <p className="fw-bold">Invoice Number :</p>
+                                    <p className="fw-bold">Invoice Date : </p>
+                                    <p className="fw-bold">Discount:</p>
+                                    <p className="fw-bold">Delivery:</p>
+                                    <p className="fw-bold">Total:</p>
+                                </div>
+                                <div className='col'>
+                                    <p className="text-dark">{order.orderId}</p>
+                                    <p className="text-dark">{order.orderDate}</p>
+                                    <p className="text-dark">None</p>
+                                    <p className="text-dark">Free</p>
+                                    <p className="text-dark">{order.totalPrice}</p>
                                 </div>
                             </div>
                         </div>
+                        {/* <hr className="mb-4" style={{ backgroundColor: "#e0e0e0", opacity: "1" }} /> */}
                     </div>
                 </div>
             </div>
-            <div className="h-100 ">
-                <div className="container py-2 ">
-                    <div className="row d-flex justify-content-center align-items-center h-100">
-                        <div className="col">
-                            <div className="card rounded-4" >
-                                <div className="card-header px-4 py-3">
-                                    <h5 className="text-dark mb-0">Thanks for your Order, <span style={{color: "#a8729a"}}>Tran Ngoc Tu</span>!</h5>
-                                </div>
-                                <div className="card-body p-4">
-                                    <div className="d-flex justify-content-between align-items-center mb-2">
-                                        <p className="lead fw-normal mb-0" style={{color: "#a8729a"}}>Receipt</p>
-                                        <p className="small text-dark mb-0">Receipt Voucher : 1KAU9-84UIL</p>
-                                    </div>
-                                    <div className="card shadow-0 border">
-                                        <div className="card-body">
-                                            <div className="row">
-                                                <div className="col-md-2">
-                                                    <img src={LC1}
-                                                        className="img-fluid" alt="Phone" />
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0">Samsung Galaxy</p>
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0 small">White</p>
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0 small">Capacity: 64GB</p>
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0 small">Qty: 1</p>
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0 small">$499</p>
-                                                </div>
-                                            </div>
-                                            <hr className="mb-4" style={{backgroundColor: "#e0e0e0", opacity: "1"}} />
-                                            <div className="row d-flex align-items-center">
-                                                <div className="col-md-2">
-                                                    <p className="text-dark mb-0 small">Track Order</p>
-                                                </div>
-                                                <div className="col">
-                                                    <div className="progress" style={{height: "6px", borderRadius: "16px"}}>
-                                                        <div className="progress-bar" role="progressbar"
-                                                            style={{width: "65%", borderRadius: "16px", backgroundColor: "#a8729a"}} aria-valuenow="65"
-                                                            aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-around mb-1">
-                                                        <p className="text-dark mt-1 mb-0 small ms-xl-5">Out for delivary</p>
-                                                        <p className="text-dark mt-1 mb-0 small ms-xl-5">Delivered</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="card shadow-0 border mb-3">
-                                        <div className="card-body">
-                                            <div className="row">
-                                                <div className="col-md-2">
-                                                    <img src={LC1}
-                                                        className="img-fluid" alt="Phone" />
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0">Samsung Galaxy</p>
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0 small">White</p>
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0 small">Capacity: 64GB</p>
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0 small">Qty: 1</p>
-                                                </div>
-                                                <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                    <p className="text-dark mb-0 small">$499</p>
-                                                </div>
-                                            </div>
-                                            <hr className="mb-4" style={{backgroundColor: "#e0e0e0", opacity: "1"}} />
-                                            <div className="row d-flex align-items-center">
-                                                <div className="col-md-2">
-                                                    <p className="text-dark mb-0 small">Track Order</p>
-                                                </div>
-                                                <div className="col">
-                                                    <div className="progress" style={{height: "6px", borderRadius: "16px"}}>
-                                                        <div className="progress-bar" role="progressbar"
-                                                            style={{width: "65%", borderRadius: "16px", backgroundColor: "#a8729a"}} aria-valuenow="65"
-                                                            aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-around mb-1">
-                                                        <p className="text-dark mt-1 mb-0 small ms-xl-5">Out for delivary</p>
-                                                        <p className="text-dark mt-1 mb-0 small ms-xl-5">Delivered</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="d-flex justify-content-between pt-2">
-                                        <p className="fw-bold mb-0">Order Details</p>
-                                        <p className="text-dark mb-0"><span className="fw-bold me-4">Total</span> $898.00</p>
-                                    </div>
-
-                                    <div className="d-flex justify-content-between pt-2">
-                                        <p className="text-dark mb-0">Invoice Number : 788152</p>
-                                        <p className="text-dark mb-0"><span className="fw-bold me-4">Discount</span> $19.00</p>
-                                    </div>
-
-                                    <div className="d-flex justify-content-between">
-                                        <p className="text-dark mb-0">Invoice Date : 22 Dec,2019</p>
-                                        <p className="text-dark mb-0"><span className="fw-bold me-4">GST 18%</span> 123</p>
-                                    </div>
-
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <p className="text-dark mb-0">Recepits Voucher : 18KU-62IIK</p>
-                                        <p className="text-dark mb-0"><span className="fw-bold me-4">Delivery Charges</span> Free</p>
-                                    </div>
-                                </div>
-                                <div className="card-footer border-0 px-4 py-3 rounded-bottom-4"
-                                    style={{ backgroundColor: "#a8729a"}}>
-                                    <h5 className="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
-                                        paid: <span className="h2 mb-0 ms-2">$1040</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           </div>
-            <Footer />
         </div>
     )
 }

@@ -13,90 +13,67 @@ const Header = () => {
     const { cartTotalQuantity } = useSelector(state => state.cart);
 
     const { userInfo } = useSelector(state => state.auth);
-    const { categories } = useSelector(state => state.category);
 
-    useEffect(() => {
-        dispatch(getCategories());
-    }, [])
     return (
         <div>
-            <div className='header bg-dark'>
-                <div className='container text-light pt-3'>
-                    <div className="row">
-                        <div className="col-md-8 fs-3">
-                            <img src={Logo} alt='Logo' width="60px" className='rounded-circle me-3' />
-                            Thế giới lồng chim
+            <nav className="navbar navbar-expand-lg bg-transparent container  border-bottom border-success border-2">
+                    <img src={Logo} alt='Logo' width="80px" className='rounded-circle me-3' />
+                    <a className="navbar-brand" href="#">Thế giới lồng chim</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div className="offcanvas-header">
+                            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Thế giới lồng chim</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <div className='col-md-4  text-end'>
-                            <div className='row'>
-                                <div className="col">
-                                    <i className="bi bi-bell me-1"></i>
-                                    Thông báo
-                                </div>
-
-                                {userInfo ?
-                                    (<div className='col'>
-                                        <NavLink to="/login" className='text-decoration-none text-white' onClick={() => dispatch(logout())}><i className="bi bi-box-arrow-in-right me-2"></i>Logout</NavLink>
-                                    </div>) :
-                                    (
-                                        <div className='col'>
-                                            <NavLink to="/login" className='text-decoration-none text-white'><i className="bi bi-box-arrow-in-right me-2"></i>Đăng nhập</NavLink>
-                                        </div>)
-                                }
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <nav className="navbar navbar-expand-md text-success navbar-dark">
-                                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span className="navbar-toggler-icon"></span>
-                                </button>
-                                <div className="collapse navbar-collapse " id="navbarSupportedContent">
-                                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-                                        <li className="nav-item">
-                                            <NavLink to="/" className="nav-link active " aria-current="page" style={{ color: "white", textDecoration: "none", marginRight: "15px" }} >Trang chủ</NavLink>
-                                        </li>
-                                        <li className="nav-item dropdown">
-                                            <NavLink className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: "white", textDecoration: "none", marginRight: "15px" }} >
-                                                Mẫu lồng
-                                            </NavLink>
-                                            <ul className="dropdown-menu">
-                                                {categories?.map((category, index) => (
-                                                    <li key={index}>
-                                                        <NavLink to={`/listProducts/${category.birdTypeId}`} className="dropdown-item text-decoration-none" >{category.name}</NavLink>
-                                                    </li>
-                                                ))}
-
-                                            </ul>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink className="nav-link" to="/makeBirdCage" style={{ color: "white", textDecoration: "none", marginRight: "15px" }}>Đặt lồng</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink className="nav-link" to="/order" style={{ color: "white", textDecoration: "none", marginRight: "15px" }}>Đơn hàng</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink className="nav-link" href="#" style={{ color: "white", textDecoration: "none", marginRight: "15px" }}>Giới thiệu</NavLink>
-                                        </li>
-                                    </ul>
-                                    <form className="d-flex" role="search">
-                                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                        <button className="btn btn-outline-light" type="submit">Search</button>
-                                    </form>
-                                    <NavLink to="/shoppingCart" className="position-relative mx-4 text-light text-decoration-none"><i className="bi bi-cart fs-4"></i>
-                                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <div className="offcanvas-body shop-menu text-success" >
+                            <ul className="navbar-nav justify-content-center align-items-center flex-grow-1">
+                                <li className="nav-item">
+                                    <NavLink className="nav-link active" aria-current="page" to="/" style={{ textDecoration: 'none', color:"green" }}>Home</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link active" aria-current="page" to="/products" style={{ textDecoration: 'none',color:"green" }}>Products</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link active" aria-current="page" to="/order" style={{ textDecoration: 'none',color:"green" }}>Orders</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link active" aria-current="page" to="/About" style={{ textDecoration: 'none',color:"green" }}>About</NavLink>
+                                </li>
+                            </ul>
+                            <ul className="navbar-nav justify-content-end align-items-end flex-grow-1">
+                                <li className="nav-item">
+                                    <NavLink className="nav-link active" to="/shoppingCart" style={{ textDecoration: 'none' }}><i className="bi bi-cart fs-4"></i>
+                                        <span className="translate-middle badge rounded-pill bg-danger">
                                             {cartTotalQuantity}
                                         </span>
                                     </NavLink>
-                                </div>
-                            </nav>
+                                </li>
+                                {userInfo ?
+                                    <div>
+                                        <li className="nav-item mb-1">
+                                            {userInfo?.username}
+                                        </li>
+                                        <li className="nav-item mb-1">
+                                        <NavLink className="nav-link active" aria-current="page" to='/login' onClick={() => dispatch(logout())} style={{ textDecoration: 'none',color:"green" }}>Logout</NavLink>
+                                        </li>
+                                    </div>
+                                    :
+                                    <div>
+                                        <li className="nav-item mb-1">
+                                            <NavLink className="nav-link" to="/register" style={{ textDecoration: 'none',color:"green" }}>Register</NavLink>
+                                        </li>
+                                        <li className="nav-item mb-1">
+                                            <NavLink className="nav-link" to="/login" style={{ textDecoration: 'none',color:"green" }}>Login</NavLink>
+                                        </li>
+                                    </div>
+                                }
+                            </ul>
                         </div>
                     </div>
-                </div>
-            </div>
+
+            </nav>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getProducts = createAsyncThunk("getProducts", async (args, rejectWithValue) => {
     const response = await fetch("http://20.197.41.167/api/v1/products");
     try {
-        const result = response.json();
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -14,7 +14,7 @@ export const getProducts = createAsyncThunk("getProducts", async (args, rejectWi
 export const getProductByCategory = createAsyncThunk("getProductByCategory", async (id, rejectWithValue) => {
     const response = await fetch(`http://20.197.41.167/api/v1/products/cateId?cateId=${id}`);
     try {
-        const result = response.json();
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -26,7 +26,7 @@ export const getProductByCategory = createAsyncThunk("getProductByCategory", asy
 export const getProduct = createAsyncThunk("getProduct", async (id, rejectWithValue) => {
     const response = await fetch(`http://20.197.41.167/api/v1/products/idTmp?idTmp=${id}`);
     try {
-        const result = response.json();
+        const result = await response.json();
         return result;
     } catch (error) {
         return rejectWithValue(error);
@@ -111,7 +111,7 @@ const productSlice = createSlice({
         });
         builder.addCase(getProductByCategory.fulfilled, (state, action) => {
             state.loading = false;
-            state.productByCategory = action.payload;
+            state.products = action.payload;
         });
         builder.addCase(getProductByCategory.rejected, (state, action) => {
             state.loading = false;

@@ -9,31 +9,27 @@ import { NavLink } from 'react-router-dom';
 const Login = () => {
 
     const [user, setUser] = useState({});
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-
     const { userInfo } = useSelector((state) => state.auth);
-
     const handleOnChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     }
 
     useEffect(() => {
-        if(!userInfo) {
+        if (!userInfo) {
             navigate("/login")
         }
-        if(userInfo?.roleId === 1){
+        if (userInfo?.roleId === 1) {
             navigate("/")
         }
-        if(userInfo?.roleId === 2){
+        if (userInfo?.roleId === 2) {
             navigate("/homeStaff")
         }
-        if(userInfo?.roleId === 3){
+        if (userInfo?.roleId === 3) {
             navigate("/homeManager")
         }
-        if(userInfo?.roleId === 4){
+        if (userInfo?.roleId === 4) {
             navigate("/homeAdmin")
         }
     },[userInfo])
@@ -65,7 +61,7 @@ const Login = () => {
 
                                 <div className="d-flex justify-content-around align-items-center mb-4">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="form1Example3" onChange={e => { }} checked />
+                                        <input className="form-check-input" type="checkbox" value="" id="form1Example3" checked onChange={()=>{}}/>
                                         <label className="form-check-label" htmlFor="form1Example3"> Remember me </label>
                                     </div>
                                     <NavLink to="/register" className='text-decoration-none'>Đăng ký</NavLink>
@@ -78,7 +74,6 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     )

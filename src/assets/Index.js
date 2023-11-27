@@ -10,6 +10,7 @@ import LC9 from './LC9.jpg';
 import Logo from './BirdCageLogo.png'
 import Avatar from './avatar.jpg'
 import Sale from './sale.png'
+import Shipping from './shipping.jpg';
+import Ads from './advertisement.jpg';
 
-
-export { Logo,LC1,LC2,LC3,LC4,LC5,LC6,LC7,LC8,LC9,Avatar,Sale } ;
+export { Logo,LC1,LC2,LC3,LC4,LC5,LC6,LC7,LC8,LC9,Avatar,Sale,Shipping,Ads} ;

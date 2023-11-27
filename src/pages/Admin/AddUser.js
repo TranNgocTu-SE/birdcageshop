@@ -7,8 +7,10 @@ import { ref, uploadBytes, getDownloadURL, uploadBytesResumable } from 'firebase
 import { storage } from '../firebase';
 
 const AddUser = () => {
+
     const [user, setUser] = useState({});
     const [image, setImage] = useState(null);
+    const [selectedImages, setSelectedImages] = useState();
 
 
     const dispatch = useDispatch();
@@ -18,16 +20,18 @@ const AddUser = () => {
         setUser({ ...user, [e.target.name]: e.target.value });
     }
 
-    {/* 
-    const handleOnChangeFile = (e) => {
-        setImage(e.target.files);
-    }
-
-*/}
     const handleOnChangeFile = (e) => {
         const file = e.target.files[0]
         file.preview = URL.createObjectURL(file);
         setImage(e.target.files[0]);
+    }
+
+    const onSelectFile = (e) => {
+     const selectedFiles = e.target.files[0];
+     setImage(e.target.files[0]);
+     const imagesArray = URL.createObjectURL(selectedFiles)
+     setSelectedImages(imagesArray);
+
     }
 
 
@@ -44,53 +48,11 @@ const AddUser = () => {
                 console.log(error);
             });
     };
-    {/* 
-    const uploadImage = async (img) => {
-        const imageRef = ref(storage, `images/${img.name + v4()}`);
-        return uploadBytesResumable(imageRef, img)
-            .then(snapshot => {
-                return getDownloadURL(snapshot.ref);
-            })
-            .then(downloadURL => {
-                return downloadURL
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
 
-    const imgDownLoad = () => {
-        let results = []
-        for (let img of image) {
-            uploadImage(img)
-                .then(res => {
-                    results.push(res)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        }
-        return results;
-    }
-    */}
-
-    {/* 
-    const multiImage = async (imageFileList) => {
-        const imagesUrlArray = [];
-        for (let i = 0; i < imageFileList.length; i++) {
-            const imageRef = ref(storage, `images/${image.name + v4()}`);
-            const upload = await uploadBytes(imageRef, imageFileList[i]);
-            const imageUrl = await getDownloadURL(imageRef);
-            imagesUrlArray.push(imageUrl);
-        }
-        return imagesUrlArray;
-    };
-
-*/}
+    console.log(selectedImages);
 
     const handleSubmit = async (e) => {
         e.preventDefault(e);
-        //const url2 = imgDownLoad(image);
         const url2 = await uploadImage()
         const newUser = {
             username: user.username,
@@ -102,27 +64,11 @@ const AddUser = () => {
             roleId: user.roleId? user.roleId : "1",
         }
         dispatch(createUser(newUser));
-        {/*const url2 = await uploadImage();
-        console.log(url2);
-        const newUser = {
-            username: user.username,
-            image: url2,
-            email: user.email,
-            password: user.password,
-            phoneNumber: user.phoneNumber,
-            role: user.role,
-        } 
-        console.log(newUser);
-        dispatch(createUser(newUser));
-    */}
-
         navigate('/homeAdmin');
     }
 
     return (
-        <div className='container'>
-            <section className="vh-100">
-                <div className="container h-100">
+        <div className='container my-5'>
                     <div className="row justify-content-center align-items-center h-100">
                         <div className="col-12 col-lg-9 col-xl-7">
                             <div className="card shadow-2-strong card-registration" style={{ borderRadius: "15px" }}>
@@ -167,12 +113,12 @@ const AddUser = () => {
                                         <div className='row'>
                                             <div className="col mb-2 pb-2">
                                                 <div className="form-outline">
-                                                    <input type="file" id="file" multiple name='file' className="form-control form-control-lg" onChange={handleOnChangeFile} />
+                                                    <input type="file" id="file" multiple name='file' className="form-control form-control-lg" onChange={onSelectFile} />
                                                     <label className="form-label" htmlFor="file">Image</label>
                                                 </div>
                                             </div>
                                             <div className='col'>
-                                                <img src='#' style={{ width: "100px", height: "100px" }} />
+                                                <img src={selectedImages} style={{ width: "100px", height: "100px" }} />
                                             </div>
                                         </div>
                                         <div className="row">
@@ -194,8 +140,6 @@ const AddUser = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
         </div>
     )
 }

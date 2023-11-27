@@ -25,18 +25,16 @@ const Checkout = () => {
             userId: userInfo.userId,
             expectedDeliveryDate: "2023-11-05T13:10:57.617Z",
             totalPrice: cart.cartTotalAmount,
-            cart : cart,
+            orderDetail :cart.cartItems,
             state: "HCM",
-            voucher: "HCM",
+            voucher: "None",
             country: "HCM",
             comment: "HCM"
 
         }
-        console.log(newOrder);
         dispatch(createOrderRequest(newOrder));
         navigate("/complete");
     }
-    console.log(order);
     return (
         <div>
             <div className='container vh-100'>
@@ -87,7 +85,7 @@ const Checkout = () => {
                             {cart?.cartItems.map((item, index) => (
                                 <div className='row d-flex align-items-center my-3' key={index}>
                                     <div className='col-md-2 '>
-                                        <img src={item.image} className='img-fluid' />
+                                        <img src={item.image} className='img-fluid' style={{width:"100px",height:"100px"}} />
                                     </div>
                                     <div className='col-md-7'>
                                         {item?.productName}

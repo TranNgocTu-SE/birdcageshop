@@ -14,6 +14,7 @@ function AddProduct() {
 
     const [product, setProduct] = useState();
     const [image, setImage] = useState(null);
+    const [selectedImages, setSelectedImages] = useState();
     const { categories } = useSelector((state) => state.category);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,6 +26,28 @@ function AddProduct() {
     const handleOnChangeFile = (e) => {
         setImage(e.target.files[0]);
     }
+
+    const onSelectFile = (e) => {
+        {/*
+         const selectedFiles = e.target.files;
+        const selectedFilesArray = Array.from(selectedFiles);
+        console.log(selectedFilesArray);
+        console.log(image);
+        const imagesArray = selectedFilesArray.map((file) => {
+            return URL.createObjectURL(file);
+        });
+        console.log(imagesArray);
+        setSelectedImages(imagesArray);
+
+     */}
+
+     const selectedFiles = e.target.files[0];
+     setImage(e.target.files[0]);
+     const imagesArray = URL.createObjectURL(selectedFiles)
+     setSelectedImages(imagesArray);
+
+    }
+    console.log(image);
 
     useEffect(() => {
         dispatch(getCategories());
@@ -65,7 +88,7 @@ function AddProduct() {
                             <div className='row border  my-5 mx-0 p-3'>
                                 <div className="col">
                                     <div className='row'>
-                                        <img src={LC2} style={{ height: "600px" }} />
+                                        <img src={selectedImages} style={{ height: "600px" }} />
                                     </div>
                                 </div>
                                 <div className='col-md-6'>
@@ -139,7 +162,7 @@ function AddProduct() {
                                     </div>
                                     <div className="row mb-4">
                                         <div className="form-outline">
-                                            <input type="file" id="file" name='image' className="form-control form-control-md" onChange={handleOnChangeFile} />
+                                            <input type="file" id="file" name='image' className="form-control form-control-md"  onChange={onSelectFile} />
                                             <label className="form-label" htmlFor="file">Hinh anh</label>
                                         </div>
                                     </div>

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { LC2, LC6 } from '../../assets/Index'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { RateProduct } from './RateProduct'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProduct } from '../../redux/productSlice'
+import { v4 } from 'uuid'
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
+import { storage } from '../firebase';
+
 
 const ProductDetail = () => {
 
@@ -11,6 +14,7 @@ const ProductDetail = () => {
     const { id } = useParams();
     const [image, setImage] = useState(null);
     const [updateData, setUpdateData] = useState();
+    const [selectedImages, setSelectedImages] = useState();
     const { categories } = useSelector((state) => state.category);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -20,17 +24,38 @@ const ProductDetail = () => {
     useEffect(() => {
         fetch(`http://20.197.41.167/api/v1/products/idTmp?idTmp=${id}`)
             .then(res => res.json())
-            .then(result => setUpdateData(result))
+            .then(result => {setUpdateData(result);setSelectedImages(result?.image)})
     }, [])
     const handleOnChange = (e) => {
         setUpdateData({ ...updateData, [e.target.name]: e.target.value });
     }
 
-    const handleOnChangeFile = (e) => {
-        setImage(e.target.files[0]);
+    const uploadImage = async () => {
+        const imageRef = ref(storage, `images/${image.name + v4()}`);
+        return uploadBytesResumable(imageRef, image)
+            .then(snapshot => {
+                return getDownloadURL(snapshot.ref);
+            })
+            .then(downloadURL => {
+                return downloadURL
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    const onSelectFile = (e) => {
+     const selectedFiles = e.target.files[0];
+     setImage(e.target.files[0]);
+     const imagesArray = URL.createObjectURL(selectedFiles)
+     setSelectedImages(imagesArray);
+
     }
-    const handleOnSubmit = (e) => {
+    console.log(selectedImages);
+
+    const handleOnSubmit = async (e) => {
         e.preventDefault();
+        const url2 = await uploadImage()
         const newData = {
             productId: updateData.productId,
             productName: updateData.productName,
@@ -43,7 +68,7 @@ const ProductDetail = () => {
             size: updateData.size,
             productMaterial: updateData.productMaterial,
             birdCageType: updateData.birdCageType,
-            image: updateData.image,
+            image: url2,
             color: updateData.color,
             sale: updateData.sale
         }
@@ -60,7 +85,7 @@ const ProductDetail = () => {
                             <div className='row border  my-5 mx-0 p-3'>
                                 <div className="col">
                                     <div className='row'>
-                                        <img src={updateData?.image} style={{ height: "600px" }} />
+                                        <img src={selectedImages} style={{ height: "600px" }} />
                                     </div>
                                 </div>
                                 <div className='col-md-6'>
@@ -134,7 +159,7 @@ const ProductDetail = () => {
                                     </div>
                                     <div className="row mb-4">
                                         <div className="form-outline">
-                                            <input type="file" id="file" name='image' className="form-control form-control-md" onChange={handleOnChangeFile} />
+                                            <input type="file" id="file" name='image' className="form-control form-control-md" onChange={onSelectFile} />
                                             <label className="form-label" htmlFor="file">Hinh anh</label>
                                         </div>
                                     </div>
@@ -160,6 +185,7 @@ const ProductDetail = () => {
                     </div>
 
                 </div>
+                <RateProduct />
             </div>
         </div>
     )

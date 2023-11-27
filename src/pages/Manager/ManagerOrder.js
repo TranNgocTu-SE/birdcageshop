@@ -10,6 +10,8 @@ const ManagerOrder = () => {
 
     const { listOrders } = useSelector((state) => state.order);
     const { listUser } = useSelector((state) => state.users);
+    
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,7 +22,6 @@ const ManagerOrder = () => {
     const handleOnChange = (e) => {
         return e.target.value;
     }
-
     return (
         <div>
             <div className='d-flex'>
@@ -31,7 +32,7 @@ const ManagerOrder = () => {
                     <div>
                         <Navbar />
                     </div>
-                    <div className='container my-5'>
+                    <div className='container mt-5'>
                         <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li className="nav-item" role="presentation">
                                 <button className="nav-link active" id="pills-order1-tab" data-bs-toggle="pill" data-bs-target="#pills-order1" type="button" role="tab" aria-controls="pills-order1" aria-selected="true">Đơn hàng đang chờ</button>
@@ -47,25 +48,24 @@ const ManagerOrder = () => {
                                 <table className="table text-center">
                                     <thead>
                                         <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Price</th>
+                                            <th scope="col">Order</th>
+                                            <th scope="col">Customer</th>
+                                            <th scope="col">Total</th>
                                             <th scope="col">Status</th>
+                                            <th scope="col">Created</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-group-divider">
                                         {listOrders?.filter((e) => e.orderStatus === 1).map((order, index) => (
                                             <tr key={index}>
-                                                <th scope="row"></th>
                                                 <td>{order.orderId}</td>
-                                                <td>{order.orderDate}</td>
+                                                <th>{order.userName}</th>
                                                 <td>{order.totalPrice}</td>
-
                                                 <td>
                                                     {order?.orderStatus === 1 ? "Pending" : "Processing"}
                                                 </td>
+                                                <td>{order.orderDate}</td>
                                                 <td>
                                                     <NavLink to={`/managerOrderDetail/${order.orderId}`} className="btn btn-outline-success me-4"><i className="fa fa-edit me-2"></i>View</NavLink>
                                                 </td>
@@ -78,24 +78,24 @@ const ManagerOrder = () => {
                                 <table className="table text-center">
                                     <thead>
                                         <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Image</th>
+                                            <th scope="col">Order</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Quantity</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Description</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Created</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-group-divider">
                                         {listOrders?.filter((e) => e.orderStatus === 5).map((order, index) => (
                                             <tr key={index}>
-                                                <th scope="row">1</th>
-                                                <td><img src={LC1} className='img-fluid rounded-3' width="70px" /></td>
-                                                <td>Lồng chim sẻ</td>
-                                                <td>X1</td>
+                                                <td>{order.orderId}</td>
+                                                <th>{order.userName}</th>
                                                 <td>{order.totalPrice}</td>
-                                                <td>{order.orderStatus}</td>
+                                                <td>
+                                                    {order?.orderStatus === 5 ? "Cancelled" : "Pending"}
+                                                </td>
+                                                <td>{order.orderDate}</td>
                                                 <td>
                                                     <button className='btn btn-outline-success me-2'>xác nhận</button>
                                                 </td>
@@ -108,26 +108,27 @@ const ManagerOrder = () => {
                             <div className="tab-pane fade" id="pills-order3" role="tabpanel" aria-labelledby="pills-order3-tab" tabIndex="0">
                                 <table className="table text-center">
                                     <thead>
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Price</th>
+                                    <tr>
+                                            <th scope="col">Order</th>
+                                            <th scope="col">Customer</th>
+                                            <th scope="col">Total</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Task</th>
+                                            <th scope="col">Created</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-group-divider">
                                         {listOrders?.filter((e) => e.orderStatus === 2).map((order, index) => (
                                             <tr key={index}>
-                                                <th scope="row">1</th>
                                                 <td>{order.orderId}</td>
-                                                <td>{order.orderDate}</td>
+                                                <th>{order.userName}</th>
                                                 <td>{order.totalPrice}</td>
-                                                <td>Đã đặt</td>
+                                                <td>
+                                                    {order?.orderStatus === 1 ? "Pending" : "Processing"}
+                                                </td>
+                                                <td>{order.orderDate}</td>
                                                 <td>
                                                     <select className="form-select" id="inlineFormSelectPref" defaultValue={order.assignedEmp} onChange={(e) => dispatch(assignForStaff({ orderId: order.orderId, userId: e.target.value }))}>
-                                                        <option defaultValue={1}>Nhân viên</option>
                                                         {listUser?.filter((e) => e.roleId === 2).map((user, index) => (
                                                             <option value={user.userId} key={index}>{user.username}</option>
                                                         ))}
@@ -135,8 +136,6 @@ const ManagerOrder = () => {
                                                 </td>
                                             </tr>
                                         ))}
-
-
                                     </tbody>
                                 </table>
                             </div>
